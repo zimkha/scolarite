@@ -15,6 +15,7 @@ class CreateCasSocialsTable extends Migration
     {
         Schema::create('cas_socials', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('libelle');
             $table->timestamps();
         });
     }

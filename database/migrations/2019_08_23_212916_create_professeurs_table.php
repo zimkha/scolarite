@@ -15,6 +15,12 @@ class CreateProfesseursTable extends Migration
     {
         Schema::create('professeurs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nom');
+            $table->string('pernom');
+            $table->string('adresse');
+            $table->string('telephone');
+            $table->string('email')->nullable();
+            $table->string('matricule');
             $table->timestamps();
         });
     }
