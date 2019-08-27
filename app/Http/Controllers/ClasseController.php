@@ -80,7 +80,7 @@ class ClasseController extends Controller
                     $errors ="Erreur donnees manquants";
 
                 if ($errors !=null)
-                     return responser()->json();
+                     return response()->json($errors);
             });
         }catch(\Exception $exception)
         {
