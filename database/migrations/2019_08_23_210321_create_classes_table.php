@@ -17,9 +17,9 @@ class CreateClassesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nom_classe');
             $table->unsignedBigInteger('niveau_id');
-            $table->integer('inscription');
-            $table->integer('mensualite');
-            $table->foreign('niveau_id')->references('id')->on('niveaus')->onDelete('cascade');
+            $table->integer('somme_isncription')->nullable();
+            $table->integer('mensualite')->nullable();
+
             $table->timestamps();
         });
     }

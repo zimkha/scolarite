@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::post('/classe', 'ClasseController@save');
+Route::get('/classes', 'ClasseController@getAll');
+
+Route::post('/inscription', 'InscriptionController@save');
+Route::get('/isncriptions', 'InscriptionController@getAll');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

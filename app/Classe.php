@@ -9,7 +9,7 @@ class Classe extends Model
     protected $fillable = [
         'nom_classe',
         'niveau_id',
-        'isncription',
+        'somme_isncription',
         'mensualite'
     ];
 
@@ -20,5 +20,10 @@ class Classe extends Model
     public function inscriptions()
     {
         return $this->hasMany(Inscription::class);
+    }
+
+    public function  evaluations()
+    {
+        return $this->belongsTo(Evaluation::class);
     }
 }

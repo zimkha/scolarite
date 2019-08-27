@@ -20,10 +20,7 @@ class CreateInscriptionsTable extends Migration
             $table->unsignedInteger('annee_scolaire_id');
             $table->unsignedInteger('user_id');
             $table->integer('somme_inscription');
-            $table->foreign('eleve_id')->references('id')->on('eleves')->onDelete('cascade');
-            $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade');
-            $table->foreign('annee_scolaire_id')->references('id')->on('annee_scolaires')->onDelete('cascade');
-
+            $table->boolean('etat_inscription');
             $table->timestamps();
         });
     }
