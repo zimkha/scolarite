@@ -28,7 +28,9 @@ class InscriptionController extends Controller
                     $errors = "Veuiller renseigner les donnees de classe";
                 }
                 $eleve->nom = $request->nom_eleve;
+
                 $eleve->prenom = $request->prenom_eleve;
+
                 if(isset($request->naissance))
                 {
                     $eleve->naissance =  $request->naissance;
