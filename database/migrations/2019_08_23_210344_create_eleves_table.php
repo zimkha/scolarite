@@ -23,7 +23,7 @@ class CreateElevesTable extends Migration
             $table->string('nomcomplet_tuteur')->nullable();
             $table->string('adresse_tuteur')->nullable();
             $table->string('telephone')->nullable();
-            $table->boolean('cas_ssocial')->nullable();
+            $table->boolean('cas_social')->nullable();
             $table->timestamps();
         });
     }

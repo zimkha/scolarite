@@ -9,7 +9,7 @@ class Classe extends Model
     protected $fillable = [
         'nom_classe',
         'niveau_id',
-        'somme_isncription',
+        'somme_inscription',
         'mensualite'
     ];
 

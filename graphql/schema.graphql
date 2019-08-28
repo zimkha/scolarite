@@ -1,0 +1,80 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-01-01 13:00:00`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+type Query {
+    users: [User!]! @paginate(type: "paginator" model: "App\\User")
+    user(id: ID @eq): User @find(model: "App\\User")
+    #
+    eleves: [Eleve!]! @paginate(type: "paginator" model: "App\\Eleve")
+    eleve (id: ID @eq): Eleve @find
+    #
+    annee_scolaires: [AnneeScolaire!]! @all
+    annee_scolaire(id: ID @eq): AnneeScolaire @find
+    #
+    classes: [Classe!]! @all
+    classe(id: ID @eq): Classe @find
+    #
+    niveaux: [Niveau!]! @all
+    niveau(id: ID @eq): Niveau @find
+    #
+    inscriptions: [Inscription!]! @all
+    inscription(id: ID): Inscription @find
+    #
+
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Eleve {
+    id: ID!
+    matricule: String!
+    nom: String!
+    prenom: String!
+    adresse: Date!
+    naissance: Date!
+    nomcomplet_tuteur: String!
+    telephone: String!
+    cas_social: Boolean!
+}
+
+type Classe {
+    id: ID!
+    nom_classe: String!
+    somme_inscription: Int
+    mensualite: Int
+    niveau: Niveau! @hasOne
+}
+
+type AnneeScolaire {
+    id: ID!
+    date_debut: Date!
+    date_fin: Date!
+}
+
+type Niveau {
+    id: ID!
+    nom_niveau: String!
+}
+
+type Inscription {
+    id: ID!
+    eleve: Eleve! @hasOne
+    classe: Classe! @hasOne
+    annee_scolaire: AnneeScolaire! @hasOne
+    user: User! @hasOne
+    etat_inscription: Boolean!
+}
+# type Evaluation {
+#     id: ID!
+#     semestre: Semestre! @hasOne
+#     classses
+# }
