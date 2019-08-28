@@ -1,3 +1,4 @@
+{{--
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -77,4 +78,16 @@
         </main>
     </div>
 </body>
+</html>
+--}}
+
+<!DOCTYPE html>
+<html class="loading" lang="fr" data-textdirection="ltr">
+
+@include('layouts.partials.header')
+
+@yield('content')
+
+@include('layouts.partials.footer')
+
 </html>
