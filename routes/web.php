@@ -12,8 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/index');
 });
+
+
+Route::get('/dashboard', function () {
+    return view('pages/dashboard');
+});
+
+Route::get('/inscription', function () {
+    return view('pages/inscription');
+});
+
+
 
 
 Route::post('/classe', 'ClasseController@save');

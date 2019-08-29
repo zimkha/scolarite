@@ -12,7 +12,9 @@
         "fideloper/proxy": "^4.0",
         "laravel/cashier": "^10.1",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "mll-lab/laravel-graphql-playground": "^1.1",
+        "nuwave/lighthouse": "^4.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -64,6 +66,13 @@
             "php artisan config:cache",
             "php artisan serve --host 0.0.0.0 --port 8000",
             "elctron ."
+            ],
+            "config-server-mac": [
+                "sudo chmod -R 777 storage/ bootstrap/cache",
+                "php artisan clear-compiled",
+                "composer dumpautoload",
+                "php artisan config:cache",
+                "sudo -s chown -R _www:_www storage bootstrap/cache"
             ]
     }
 }
