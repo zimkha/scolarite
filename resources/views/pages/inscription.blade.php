@@ -22,43 +22,35 @@
                     <div class="">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="from-actions-top-left">Project Info</h4>
+                                <h4 class="card-title" id="from-actions-top-left">Informations Elève</h4>
                             </div>
                             <div class="card-content collpase show">
                                 <div class="card-body">
-                                    <form class="form">
+                                    <form class="form" action="{{ url('inscription')}}" method="post">
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-user"></i> Personal Info</h4>
+                                            <h4 class="form-section"><i class="ft-user"></i>Informations Elève</h4>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput1">First Name</label>
-                                                    <input type="text" id="projectinput1" class="form-control" placeholder="First Name" name="fname">
+                                                    <label for="projectinput1">Nom</label>
+                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nom">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput2">Last Name</label>
-                                                    <input type="text" id="projectinput2" class="form-control" placeholder="Last Name" name="lname">
+                                                    <label for="projectinput2">Prenom</label>
+                                                    <input type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput3">E-mail</label>
-                                                    <input type="text" id="projectinput3" class="form-control" placeholder="E-mail" name="email">
+                                                    <label for="projectinput3">Adresse</label>
+                                                    <input type="text" id="projectinput3" class="form-control" placeholder="adresse" name="adresse">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput4">Contact Number</label>
-                                                    <input type="text" id="projectinput4" class="form-control" placeholder="Phone" name="phone">
+                                                    <input type="date" id="projectinput4" class="form-control" placeholder="date naissance" name="naissance">
                                                 </div>
                                             </div>
 
-                                            <h4 class="form-section"><i class="ft-clipboard"></i> Requirements</h4>
-
-                                            <div class="row">
-                                                <div class="form-group col-12 mb-2">
-                                                    <label for="projectinput5">Company</label>
-                                                    <input type="text" id="projectinput5" class="form-control" placeholder="Company Name" name="company">
-                                                </div>
-                                            </div>
-
+                                            <h4 class="form-section"><i class="ft-clipboard"></i> Classe & Niveau</h4>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput6">Interested in</label>
@@ -86,18 +78,36 @@
 
                                             <div class="row">
                                                 <div class="form-group col-12 mb-2">
-                                                    <label>Select File</label>
+                                                    <label>Choisir photo</label>
                                                     <label id="projectinput8" class="file center-block">
                                                         <input type="file" id="file">
                                                         <span class="file-custom"></span>
                                                     </label>
                                                 </div>
                                             </div>
+                                            <h4 class="form-section"><i class="ft-user"></i>Informations Tuteur</h4>
                                             <div class="row">
-                                                <div class="form-group col-12 mb-2">
-                                                    <label for="projectinput9">About Project</label>
-                                                    <textarea id="projectinput9" rows="5" class="form-control" name="comment" placeholder="About Project"></textarea>
+                                                <div class="form-group col-md-6 mb-2">
+                                                    <label for="projectinput1">Nom</label>
+                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nom">
                                                 </div>
+                                                <div class="form-group col-md-6 mb-2">
+                                                    <label for="projectinput2">Prenom</label>
+                                                    <input type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6 mb-2">
+                                                    <label for="projectinput3">Adresse</label>
+                                                    <input type="text" id="projectinput3" class="form-control" placeholder="adresse" name="adresse">
+                                                </div>
+                                                <div class="form-group col-md-6 mb-2">
+                                                    <label for="projectinput4">Contact Number</label>
+                                                    <input type="date" id="projectinput4" class="form-control" placeholder="date naissance" name="naissance">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                 &nbsp;&nbsp; &nbsp; <button type="submit" name="binscription" class="btn btn-success float-right">Enregistre</button>
                                             </div>
                                         </div>
                                     </form>

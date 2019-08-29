@@ -18,6 +18,7 @@ class InscriptionController extends Controller
             return DB::transaction(function() use($request){
                 $errors = null;
                 $date = 0;
+               
                 $inscription = new Inscription();
                 $eleve = new Eleve();
                 if($request->eleve_id) $eleve = ELeve::find($request->eleve_id);
@@ -112,7 +113,7 @@ class InscriptionController extends Controller
 
       }catch (\Exception $e)
       {
-          re
+          
       }
     }
 }
