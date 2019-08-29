@@ -17,20 +17,15 @@
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/vendors.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/ui/prism.min.css') }}">
-    <!-- END VENDOR CSS-->
-    <!-- BEGIN ROBUST CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/app.css') }}">
-    <!-- END ROBUST CSS-->
-    <!-- BEGIN Page Level CSS-->
+
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
-    <!-- END Page Level CSS-->
-    <!-- BEGIN Custom CSS-->
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
-      <!-- BEGIN Custom CSS-->
-      <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <!-- END Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/icheck/icheck.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/icheck/custom.css') }}">
 
