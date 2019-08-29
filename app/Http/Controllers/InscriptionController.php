@@ -108,6 +108,11 @@ class InscriptionController extends Controller
      */
     public  function getInscriptionsByAnnee($id_anne)
     {
+      try{
 
+      }catch (\Exception $e)
+      {
+          re
+      }
     }
 }

@@ -19,7 +19,6 @@ class CreateClassesTable extends Migration
             $table->unsignedBigInteger('niveau_id');
             $table->integer('somme_isncription')->nullable();
             $table->integer('mensualite')->nullable();
-
             $table->timestamps();
         });
     }
