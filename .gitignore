@@ -7,8 +7,12 @@
 /storage/*.key
 /storage
 /vendor
+<<<<<<< HEAD
+.idea/workspace.xml
+=======
 /.idea
 /.vagrant
+>>>>>>> 449667a0e3f5472428eb16c5ae80e42c90208013
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Eleve;
-use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
