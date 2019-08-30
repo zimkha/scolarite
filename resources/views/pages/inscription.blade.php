@@ -37,13 +37,20 @@
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Informations Elève</h4>
                                             <div class="row">
-                                                <div class="form-group col-md-6 mb-2">
+                                                <div class="form-group col-md-4 mb-2">
                                                     <label for="projectinput1">Nom</label>
                                                     <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nom_eleve">
                                                 </div>
-                                                <div class="form-group col-md-6 mb-2">
+                                                <div class="form-group col-md-4 mb-2">
                                                     <label for="projectinput2">Prenom</label>
                                                     <input type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom_eleve">
+                                                </div>
+                                                <div class="form-group col-md-4 mb-2">
+                                                    <label for="projectinput2">Genre</label>
+                                                    <select name="genre" class="form-control">
+                                                        <option value="1">Masculin</option>
+                                                        <option value="0">Feminin</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -52,8 +59,8 @@
                                                     <input type="text" id="projectinput3" class="form-control" placeholder="adresse" name="adresse">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput4">Contact Number</label>
-                                                    <input type="date" id="projectinput4" class="form-control" placeholder="date naissance" name="naissance">
+                                                    <label for="projectinput4">date de naissance</label>
+                                                    <input type="date"  class="form-control" placeholder="date naissance" name=" ">
                                                 </div>
                                             </div>
 
@@ -83,11 +90,7 @@
 
                                             <div class="row">
                                                 <div class="form-group col-12 mb-2">
-                                                    <label>Choisir photo</label>
-                                                    <label id="projectinput8" class="file center-block">
-                                                        <input type="file" id="file">
-                                                        <span class="file-custom"></span>
-                                                    </label>
+                                                        <input type="file" name="image" class="form-control">
                                                 </div>
                                             </div>
                                             <h4 class="form-section"><i class="ft-user"></i>Informations Tuteur</h4>
@@ -98,17 +101,17 @@
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput2">Prenom</label>
-                                                    <input type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom">
+                                                    <input type="text"  class="form-control" placeholder="prenom" name="prenom">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput3">Adresse</label>
-                                                    <input type="text" id="projectinput3" class="form-control" placeholder="adresse" name="adresse">
+                                                    <input type="text" class="form-control" placeholder="adresse" name="adresse">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput4">Contact Number</label>
-                                                    <input type="date" id="projectinput4" class="form-control" placeholder="date naissance" name="naissance">
+                                                    <label for="projectinput4">Contact/phone</label>
+                                                    <input type="phone"  class="form-control" placeholder="telephone tuteur" name="telephone">
                                                 </div>
                                             </div>
                                             <div class="row">

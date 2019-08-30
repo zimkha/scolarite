@@ -11,6 +11,7 @@ class Inscription extends Model
         'eleve_id',
         'classe_id',
         'annee_scolaire_id',
+        'image'
     ];
 
     public function eleve()

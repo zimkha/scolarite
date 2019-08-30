@@ -16,6 +16,7 @@
             <div class="content-header row">
             </div>
             <div class="content-body"><!-- CRM stats -->
+
                 <div class="row">
                     <div class="col-xl-4 col-lg-6 col-md-12">
                         <div class="card">
@@ -144,6 +145,7 @@
                     </div>
                 </div>
             </section>
+
         </div>
 
 

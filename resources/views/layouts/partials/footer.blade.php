@@ -1,10 +1,16 @@
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js') }}" type="text/javascript"></script>
+<script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.rowReorder.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}" type="text/javascript"></script>
+<!-- END PAGE VENDOR JS-->
 
 <script type="text/javascript" src="{{ asset('app-assets/vendors/js/ui/prism.min.js') }}"></script>
 
-<script src="{{ asset('app-assets/js/core/app-menu.js" type="text/javascript') }}"></script>
-<script src="{{ asset('app-assets/js/core/app.js" type="text/javascript') }}"></script>
-<script src="{{ asset('app-assets/js/scripts/customizer.js" type="text/javascript') }}"></script>
+<script src="{{asset('app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
+<script src="{{asset('app-assets/js/core/app.js')}}" type="text/javascript"></script>
+<script src="{{asset('app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
 
 
 <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}" type="text/javascript"></script>
@@ -31,5 +37,7 @@
 <script src="{{ asset('app-assets/js/core/angular-ngtable.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/js/core/backoffice.js') }}" type="text/javascript"></script>
 <!--END ANGULAR JS -->
-<script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js') }}" type="text/javascript"></script>
+
 <script src="{{ asset('app-assets/js/scripts/tables/datatables-extensions/datatables-sources.js') }}" type="text/javascript"></script>
+
+

@@ -14,7 +14,8 @@ class Eleve extends Model
         'naissance',
         'nomcomplet_tuteur',
         'adresse_tuteur',
-        'telephone'
+        'telephone',
+        'genre'
     ];
 
     public function inscriptions()

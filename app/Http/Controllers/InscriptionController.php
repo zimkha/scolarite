@@ -55,9 +55,11 @@ class InscriptionController extends Controller
 
                 $eleve->prenom = $request->prenom_eleve;
 
-                if(isset($request->naissance))
+
+
+                if(isset($request->date_naissance))
                 {
-                    $eleve->naissance =  $request->naissance;
+                    $eleve->naissance =  $request->date_naissance;
                 }
                 if(isset($request->nomcompet_tuteur))
                 {
@@ -75,6 +77,22 @@ class InscriptionController extends Controller
                 {
                     $eleve->cas_ssocial = $request->cas_ssocial;
                 }
+                if (isset($request->genre))
+                {
+                    $eleve->genre = $request->genre;
+                }
+
+                if ($request->hasFile('image'))
+                {
+                    $image = $request->file('image');
+                    $extension = $image->getClientOriginalExtension();
+                    dd($extension);
+                    $image_name = time().'.'.$extension;
+                    $image->move('images/insription', $image_name);
+                    $inscription->image = $image_name;
+                }
+                else
+                    return 'false';
                 $matricule                  = strtoupper(substr($request->nom_eleve, 0,1).
                                                 substr($request->prenom_eleve, 0,1))."-".rand(10000,99999);
                 $eleve->matricule           = $matricule;

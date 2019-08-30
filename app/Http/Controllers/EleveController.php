@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Eleve;
+use App\Inscription;
+use App\Mensuel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -57,6 +59,27 @@ class EleveController extends Controller
      */
     public function delete($id)
     {
+
+    }
+
+    public  function show($id)
+    {
+
+            $php_errormsg = null;
+            if($id)
+            {
+                $eleve = Eleve::find($id);
+                $inscription = Inscription::where('eleve_id', $eleve->id)->get();
+                $classe = [];
+                $single = null;
+                $mois = Mensuel::all();
+                foreach ($inscription as $item)
+                {
+                  $classe = $item->classe;
+                  $inscri = $item;
+                }
+            }
+            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'inscri'));
 
     }
 }

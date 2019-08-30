@@ -31,3 +31,5 @@ Route::get('/isncriptions', 'InscriptionController@getAll');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile-eleve/{id}', 'EleveController@show');
