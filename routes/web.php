@@ -16,13 +16,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('pages/dashboard');
-});
+Route::get('/dashboard', 'HomeController@index');
 
-Route::get('/inscription', function () {
-    return view('pages/inscription');
-});
+Route::get('/inscription', 'InscriptionController@index');
 
 
 

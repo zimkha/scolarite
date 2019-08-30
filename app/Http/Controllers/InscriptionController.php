@@ -2,16 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\AnneeScolaire;
+use App\Classe;
 use App\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Eleve;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use \DateTime;
 
 class InscriptionController extends Controller
 {
+
+    public  function index()
+    {
+        $classes = Classe::all();
+        $anneescolaire = AnneeScolaire::all();
+        $date_now = date('Y-m-d');
+        $anne = null;
+        foreach ($anneescolaire as $item)
+        {
+          //  dd($date_now, $item->date_debut, $item->date_fin, strtotime($date_now), strtotime($item->date_debut));
+            if ($date_now <= $item->date_fin && $date_now >= $item->date_debut)
+            {
+                $anne = $item;
+            }
+        }
+
+        return view('pages/inscription', compact('classes', 'anne'));
+    }
+
     public  function  save(Request $request)
     {
         try{
@@ -24,9 +47,9 @@ class InscriptionController extends Controller
                 if($request->eleve_id) $eleve = ELeve::find($request->eleve_id);
                 if($request->id) $inscription = Inscription::find($request->id);
 
-                if (empty($request->classe_id) || empty($request->annee_scolaire_id) || empty($request->nom_eleve) || empty($request->prenom_eleve) || empty($request->montant))
+                if (empty($request->classe_id) || empty($request->annee_scolaire_id) || empty($request->nom_eleve) || empty($request->prenom_eleve))
                 {
-                    $errors = "Veuiller renseigner les donnees de classe";
+                    $errors = "Veuiller renseigner tout les champs";
                 }
                 $eleve->nom = $request->nom_eleve;
 
@@ -58,7 +81,8 @@ class InscriptionController extends Controller
               //  dd($eleve);
                 $inscription->classe_id     = $request->classe_id;
                 $inscription->annee_scolaire_id = $request->annee_scolaire_id;
-                $inscription->somme_inscription = $request->montant;
+                $classe  = Classe::find($request->classe_id);
+                $inscription->somme_inscription = $classe->somme_isncription;
                 $inscription->etat_inscription = true;
                 $inscription->user_id = 1;
                 if ($errors == null)
@@ -66,11 +90,15 @@ class InscriptionController extends Controller
                     $eleve->save();
                     $inscription->eleve_id = $eleve->id;
                     $inscription->save();
-                    return  response()->json($inscription);
+                    Session::flash('message', "inscription bien enregistre");
+                    return Redirect::back();
+                    //return redirect()->back()->with('success', ['Inscription bien enregistre']);
+                    //return  response()->json($inscription);
                 }
                 else
                 {
-                    return response()->json($errors);
+                    Session::flash('error', $errors);
+                    return Redirect::back();
                 }
 
             });

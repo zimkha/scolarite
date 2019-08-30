@@ -26,6 +26,10 @@
 <script src="{{ asset('app-assets/vendors/js/extensions/dropzone.min.js') }}" type="text/javascript"></script>
 
 <script src="{{ asset('app-assets/js/scripts/pages/dashboard-crm.js') }}" type="text/javascript"></script>
-
+<!--  ANGULAR JS-->
+<script src="{{ asset('app-assets/js/core/angular.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('app-assets/js/core/angular-ngtable.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('app-assets/js/core/backoffice.js') }}" type="text/javascript"></script>
+<!--END ANGULAR JS -->
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/js/scripts/tables/datatables-extensions/datatables-sources.js') }}" type="text/javascript"></script>

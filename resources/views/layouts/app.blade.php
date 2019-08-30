@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="fr" data-textdirection="ltr">
+<html class="loading" lang="fr" data-textdirection="ltr" ng-app="appModule">
 
 @include('layouts.partials.header')
 

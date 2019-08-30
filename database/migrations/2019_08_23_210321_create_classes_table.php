@@ -16,7 +16,7 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom_classe');
-            $table->unsignedBigInteger('niveau_id');
+            $table->unsignedBigInteger('niveau_classe_id');
             $table->integer('somme_inscription')->nullable();
             $table->integer('mensualite')->nullable();
             $table->timestamps();

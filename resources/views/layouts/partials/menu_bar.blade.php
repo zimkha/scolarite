@@ -2,7 +2,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-            <li class=" nav-item"><a href="#"><i class="icon-home"></i>Dashboard</a></li>
+            <li class=" nav-item"><a href="{{ url('dashboard') }}"><i class="icon-home"></i>Dashboard</a></li>
         <li class=" nav-item"><a href="{{ url('inscription')}}"><i class="icon-info"></i>Inscription</a></li>
             <li class=" nav-item"><a href="#"><i class="icon-note"></i>Classe</a></li>
             <li class=" nav-item"><a href="#"><i class="icon-graduation"></i>Evaluation</a></li>

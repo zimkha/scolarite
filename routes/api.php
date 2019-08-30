@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::resource('inscription', 'Api\InscriptionController');
+Route::resource('classe', 'Api\ClasseController');
+Route::resource('eleve', 'Api\EleveController');
+Route::resource('evaluation', 'Api\EvaluationController');
+Route::resource('niveau', 'Api\NiveauController');

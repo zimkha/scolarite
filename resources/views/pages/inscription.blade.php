@@ -14,6 +14,12 @@
         <div class="content-header row">
             <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
                 <h3 class="content-header-title mb-0 d-inline-block">Formulaire d'inscription</h3>
+                @if (\Illuminate\Support\Facades\Session::has('message'))
+                    <div class="alert alert-info">{{ Session::get('message') }}</div>
+                @endif
+                @if (\Illuminate\Support\Facades\Session::has('error'))
+                    <div class="alert alert-info">{{ Session::get('error') }}</div>
+                @endif
             </div>
         </div>
         <div class="content-body"><!-- Form actions layout section start -->
@@ -27,16 +33,17 @@
                             <div class="card-content collpase show">
                                 <div class="card-body">
                                     <form class="form" action="{{ url('inscription')}}" method="post">
+                                        <input type="hidden" name="annee_scolaire_id" value="{{ $anne->id }}">
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Informations Elève</h4>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput1">Nom</label>
-                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nom">
+                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nom_eleve">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput2">Prenom</label>
-                                                    <input type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom">
+                                                    <input type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom_eleve">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -50,10 +57,10 @@
                                                 </div>
                                             </div>
 
-                                            <h4 class="form-section"><i class="ft-clipboard"></i> Classe & Niveau</h4>
+                                            <h4 class="form-section"><i class="ft-clipboard"></i>Niveau & Classe</h4>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput6">Interested in</label>
+                                                    <label for="projectinput6">Niveau</label>
                                                     <select id="projectinput6" name="interested" class="form-control">
                                                         <option value="none" selected="" disabled="">Interested in</option>
                                                         <option value="design">design</option>
@@ -65,13 +72,11 @@
                                                 </div>
 
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput7">Budget</label>
-                                                    <select id="projectinput7" name="budget" class="form-control">
-                                                        <option value="0" selected="" disabled="">Budget</option>
-                                                        <option value="less than 5000$">less than 5000$</option>
-                                                        <option value="5000$ - 10000$">5000$ - 10000$</option>
-                                                        <option value="10000$ - 20000$">10000$ - 20000$</option>
-                                                        <option value="more than 20000$">more than 20000$</option>
+                                                    <label for="projectinput7">Classe</label>
+                                                    <select id="projectinput7" name="classe_id" class="form-control">
+                                                      @foreach($classes as $class)
+                                                          <option value="{{ $class->id }}">{{ $class->nom_classe }}</option>
+                                                          @endforeach
                                                     </select>
                                                 </div>
                                             </div>
