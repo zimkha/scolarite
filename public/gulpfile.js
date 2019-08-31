@@ -14,7 +14,7 @@ gulp.task('sass', function() {
 
 gulp.task('serve', function() {
     sync.init({
-        proxy: "http://localhost/lidjenti_back/public/",
+        proxy: "http://localhost/scolarite/public/",
         port:port+1
     });
 
