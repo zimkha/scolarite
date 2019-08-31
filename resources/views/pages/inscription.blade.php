@@ -138,3 +138,5 @@
         </span>
     </p>
 </footer>
+
+@endsection
