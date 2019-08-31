@@ -27,17 +27,13 @@
             <div class="card">
                 <div class="text-center">
                     <div class="card-body">
-                        <img src="{{asset('app-assets/images/portrait/medium/avatar-m-1.png')}}" class="rounded-circle  height-150" alt="Card image">
+                        <img  src="{{ asset($chemin) }}" class="rounded-circle  height-150 width-150" alt="Card image">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">{{ $eleve->matricule }}</h4>
                         <h6 class="card-subtitle text-muted">{{ $eleve->naissance }}</h6>
                     </div>
-                    <div class="text-center">
-                        <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-facebook"><span class="fa fa-facebook"></span></a>
-                        <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#" class="btn btn-social-icon mb-1 btn-outline-linkedin"><span class="fa fa-linkedin font-medium-4"></span></a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -65,10 +61,7 @@
                          </tr>
                      </table>
                     </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Informations Tuteur</h4>
-                        <h6 class="card-subtitle text-muted"></h6>
-                    </div>
+
 
                 </div>
             </div>
@@ -83,11 +76,7 @@
                         <h4 class="card-title">Joseph Ryan</h4>
                         <h6 class="card-subtitle text-muted">Marketing Head</h6>
                     </div>
-                    <div class="text-center">
-                        <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-facebook"><span class="fa fa-facebook"></span></a>
-                        <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#" class="btn btn-social-icon mb-1 btn-outline-linkedin"><span class="fa fa-linkedin font-medium-4"></span></a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -128,7 +117,7 @@
                                         <td>250000</td>
                                         <td>Etat</td>
                                         <td>
-                                            <a type="button" href="" class="btn btn-success " data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
+                                            <a  href="" class="btn btn-success " data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
                                         </td>
 
                                     </tr>
@@ -172,7 +161,7 @@
                                         <td>250000</td>
                                         <td>Etat</td>
                                         <td>
-                                            <a type="button" href="" class="btn btn-success " data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
+                                            <a href="" class="btn btn-success" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
                                         </td>
 
                                     </tr>

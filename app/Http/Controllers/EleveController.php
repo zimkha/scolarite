@@ -96,14 +96,17 @@ class EleveController extends Controller
                   $classe = $item->classe;
                   $inscri = $item;
                   $filename = $inscri->image;
-                 if (!File::exists(base_path().$directory, $filename))
+
+                 if (File::exists(base_path().$directory, $filename))
                  {
-                     $path = base_path().$directory.'/'.$filename;
+
+                     $path = base_path().$directory.$filename;
+                     $chemin = 'uploads/imgs/'.$filename;
                      $image = File::get($path);
                  }
                 }
             }
-            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'inscri', 'image'));
+            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'inscri', 'image', 'path', 'chemin'));
 
     }
 }
