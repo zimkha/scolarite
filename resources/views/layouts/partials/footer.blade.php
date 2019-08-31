@@ -8,11 +8,6 @@
 
 <script type="text/javascript" src="{{ asset('app-assets/vendors/js/ui/prism.min.js') }}"></script>
 
-<script src="{{asset('app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
-<script src="{{asset('app-assets/js/core/app.js')}}" type="text/javascript"></script>
-<script src="{{asset('app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
-
-
 <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/vendors/js/forms/validation/jqBootstrapValidation.js') }}" type="text/javascript"></script>
 
@@ -32,6 +27,10 @@
 <script src="{{ asset('app-assets/vendors/js/extensions/dropzone.min.js') }}" type="text/javascript"></script>
 
 <script src="{{ asset('app-assets/js/scripts/pages/dashboard-crm.js') }}" type="text/javascript"></script>
+<script src="{{ asset('app-assets/js/core/app-menu.js" type="text/javascript') }}"></script>
+<script src="{{ asset('app-assets/js/core/app.js" type="text/javascript') }}"></script>
+<script src="{{ asset('app-assets/js/scripts/customizer.js" type="text/javascript') }}"></script>
+
 <!--  ANGULAR JS-->
 <script src="{{ asset('app-assets/js/core/angular.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/js/core/angular-ngtable.min.js') }}" type="text/javascript"></script>
