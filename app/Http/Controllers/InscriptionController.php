@@ -84,7 +84,6 @@ class InscriptionController extends Controller
                     $eleve->genre = $request->genre;
                 }
 
-                dd($eleve);
 
                 if ($request->hasFile('image'))
                 {
