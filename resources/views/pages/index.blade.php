@@ -22,13 +22,13 @@
                                     <form class="form-horizontal form-simple" action="#" novalidate>
                                         <fieldset class="form-group position-relative has-icon-left mb-0">
                                             <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Your Username" required>
-                                            <div class="form-control-position mt-1">
+                                            <div class="form-control-position">
                                                 <i class="ft-user"></i>
                                             </div>
                                         </fieldset>
                                         <fieldset class="form-group position-relative has-icon-left">
                                             <input type="password" class="form-control form-control-lg input-lg" id="user-password" placeholder="Enter Password" required>
-                                            <div class="form-control-position mt-1">
+                                            <div class="form-control-position">
                                                 <i class="ft-lock"></i>
                                             </div>
                                         </fieldset>
