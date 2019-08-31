@@ -225,7 +225,7 @@
 
     <div class="col-lg-4 col-md-6 col-sm-12">
 
-
+        {{ $image }}
             <div class="modal fade text-left" id="showUpdateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
@@ -236,7 +236,8 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" method="post">
+                            <form class="form-horizontal" method="post" action="{{ route('save-update-eleve') }}">
+                                <input type="hidden" name="id" value="{{ $eleve->id }}">
                                 <div class="row">
                                 <div class="form-group col-md-4 mb-2">
                                     <label for="nom">nom</label>
@@ -252,22 +253,27 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-4 mb-2">
+                                    <div class="form-group col-md-3 mb-2">
                                         <label for="nom">date naissance</label>
                                         <input type="date" name="date_naissance" value="{{ $eleve->naissance }}" class="form-control">
                                     </div>
-                                    <div class="form-group col-md-4 mb-2">
+                                    <div class="form-group col-md-3 mb-2">
                                         <label for="nom">nom complet tuteur</label>
-                                        <input type="texte" name="nom" value="{{ $eleve->nomcomplet_tuteur }}" class="form-control">
+                                        <input type="texte" name="nomcomplet" value="{{ $eleve->nomcomplet_tuteur }}" class="form-control">
                                     </div>
-                                    <div class="form-group col-md-4 mb-2">
-                                        <label for="nom">nom</label>
-                                        <input type="texte" name="nom" value="{{ $eleve->nom }}" class="form-control">
+                                    <div class="form-group col-md-3 mb-2">
+                                        <label for="nom">Adresse Tuteur</label>
+                                        <input type="texte" name="adresse_tuteur" value="{{ $eleve->adresse_tuteur }}" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-3 mb-2">
+                                        <label for="nom">Telephone Contact</label>
+                                        <input type="phone" name="telephone" value="{{ $eleve->telephone }}" class="form-control">
                                     </div>
                                 </div>
+
                                 <div class="modal-footer">
-                                    <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-outline-primary">Save changes</button>
+                                    <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit"  name="updateEleve" class="btn btn-outline-primary">Save changes</button>
                                 </div>
                             </form>
                         </div>
@@ -280,4 +286,5 @@
     </div>
     </div>
     </body>
+    @endsection
 

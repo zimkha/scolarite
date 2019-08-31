@@ -24,6 +24,7 @@ class InscriptionController extends Controller
         $anneescolaire = AnneeScolaire::all();
         $date_now = date('Y-m-d');
         $anne = null;
+
         foreach ($anneescolaire as $item)
         {
           //  dd($date_now, $item->date_debut, $item->date_fin, strtotime($date_now), strtotime($item->date_debut));

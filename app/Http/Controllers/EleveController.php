@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Eleve;
 use App\Inscription;
 use App\Mensuel;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+
 
 class EleveController extends Controller
 {
@@ -20,6 +23,7 @@ class EleveController extends Controller
             return DB::transaction(function () use($request){
                 $errors = null;
                 $data = 0;
+                dd($request->all());
                 if(empty($request->id))
                 {
                     $errors ="Les donnees envoye sont manquants";
@@ -27,19 +31,31 @@ class EleveController extends Controller
                  $eleve = Eleve::find($request->id);
                 if ($eleve)
                 {
-                 if (empty($request->adresse) || empty($request->naissance) || empty($request->nomcomplet) || empty($request->adresse_tuteur))
+                   if (isset($request->adresse)){
+                       $eleve->adresse          = $request->adresse;
+                   }
+                   if (isset($request->date_naissance))
+                   {
+                       $eleve->naissance        = $request->date_aissance;
+                   }
+
+                 if (isset($request->nomcomplet))
                  {
-                     $errors = "Veuillez remplir tout les champs";
+                     $eleve->nomcomplet       = $request->nomcomplet;
                  }
-                   $eleve->adresse          = $request->adresse;
-                   $eleve->naissance        = $request->naissance;
-                   $eleve->nomcomplet       = $request->nomcomplet;
-                   $eleve->adresse_tuteur   = $request->adresse_tuteur;
+
+                  if (isset($request->adresse_tuteur))
+                  {
+                      $eleve->adresse_tuteur   = $request->adresse_tuteur;
+                  }
                    if(isset($request->telephone)) $eleve->telephone = $request->telephone;
                    if ($errors == null)
                    {
+                       $eleve->nom  = $request->nom;
+                       $eleve->prenom = $request->prenom;
+                       $eleve->adresse  = $request->adresse;
                        $eleve->save();
-                       return response()->json($errors);
+                       return redirect()->route('voir-eleve', ['id' => $eleve->id]);
                    }
                    else return response()->json($errors);
                 }
@@ -72,14 +88,22 @@ class EleveController extends Controller
                 $inscription = Inscription::where('eleve_id', $eleve->id)->get();
                 $classe = [];
                 $single = null;
+                $image = null;
                 $mois = Mensuel::all();
+                $directory = '/public/uploads/imgs/';
                 foreach ($inscription as $item)
                 {
                   $classe = $item->classe;
                   $inscri = $item;
+                  $filename = $inscri->image;
+                 if (!File::exists(base_path().$directory, $filename))
+                 {
+                     $path = base_path().$directory.'/'.$filename;
+                     $image = File::get($path);
+                 }
                 }
             }
-            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'inscri'));
+            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'inscri', 'image'));
 
     }
 }

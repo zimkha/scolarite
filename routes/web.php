@@ -26,6 +26,7 @@ Route::get('/inscription', 'InscriptionController@index');
 Route::post('/classe', 'ClasseController@save');
 Route::get('/classes', 'ClasseController@getAll');
 Route::get('/classe/{id}', 'ClasseController@show')->name('show-classe');
+Route::post('/eleve-store', 'EleveController@saveUpdate')->name('save-update-eleve');
 
 Route::post('/inscription', 'InscriptionController@save')->name('inscrire');
 Route::get('/isncriptions', 'InscriptionController@getAll');

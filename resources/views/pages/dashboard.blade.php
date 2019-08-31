@@ -18,7 +18,7 @@
             <div class="content-body"><!-- CRM stats -->
 
                 <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-12">
+                    <div class="col-xl-6 col-lg-6 col-md-12">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body text-center">
@@ -44,29 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-12">
-                        @foreach($niveaus as $item)
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-body text-left">
-                                                <h3 class="success">{{ $item->nom_niveau }}</h3>
-                                                <span>classes: </span>
-                                            </div>
-                                            <div class="media-right media-middle">
-                                                <i class=" success font-large-2 float-right"> {{ count($item->classes) }}</i>
-                                            </div>
-                                        </div>
-                                        <div class="progress mt-1 mb-0" style="height: 7px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="col-xl-4 col-lg-12 col-md-12">
+                    <div class="col-xl-6 col-lg-12 col-md-12">
                        @foreach($niveaus as $item)
                             <div class="card">
                                 <div class="card-content">
@@ -109,7 +87,12 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
 
-                                    <div id="DataTables_Table_10_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_10_length"><label>Show <select name="DataTables_Table_10_length" aria-controls="DataTables_Table_10" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="DataTables_Table_10_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="DataTables_Table_10"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped table-bordered comma-decimal-place dataTable" id="DataTables_Table_10" role="grid" aria-describedby="DataTables_Table_10_info">
+                                    <div id="DataTables_Table_10_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_10_length">
+                                                    <label>Show <select name="DataTables_Table_10_length" aria-controls="DataTables_Table_10" class="form-control form-control-sm"><option value="10">10</option>
+                                                            <option value="25">25</option><option value="50">50</option><option value="100">100</option>
+                                                        </select> entries</label></div></div><div class="col-sm-12 col-md-6">
+                                                <div id="DataTables_Table_10_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="DataTables_Table_10"></label>
+                                                </div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped table-bordered comma-decimal-place dataTable" id="DataTables_Table_10" role="grid" aria-describedby="DataTables_Table_10_info">
                                                     <thead>
                                                     <tr role="row">
                                                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 238px;">Matricule</th>
