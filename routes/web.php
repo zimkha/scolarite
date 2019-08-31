@@ -25,11 +25,12 @@ Route::get('/inscription', 'InscriptionController@index');
 
 Route::post('/classe', 'ClasseController@save');
 Route::get('/classes', 'ClasseController@getAll');
+Route::get('/classe/{id}', 'ClasseController@show')->name('show-classe');
 
-Route::post('/inscription', 'InscriptionController@save');
+Route::post('/inscription', 'InscriptionController@save')->name('inscrire');
 Route::get('/isncriptions', 'InscriptionController@getAll');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile-eleve/{id}', 'EleveController@show');
+Route::get('/profile-eleve/{id}', 'EleveController@show')->name('voir-eleve');

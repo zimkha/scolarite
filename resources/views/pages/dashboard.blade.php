@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                         <div class="progress mt-1 mb-0" style="height: 7px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
-                                    <p class="card-text">A dot (.) is used to mark the decimal place in Javascript, however, many parts of the world use a comma (,) and other characters such as the Unicode decimal separator (⎖) or a dash (-) are often used to show the decimal place in a displayed number.</p>
+
                                     <div id="DataTables_Table_10_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_10_length"><label>Show <select name="DataTables_Table_10_length" aria-controls="DataTables_Table_10" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="DataTables_Table_10_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="DataTables_Table_10"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped table-bordered comma-decimal-place dataTable" id="DataTables_Table_10" role="grid" aria-describedby="DataTables_Table_10_info">
                                                     <thead>
                                                     <tr role="row">
@@ -128,6 +128,8 @@
                                                             <td>{{ $item->eleve->naissance }}</td>
                                                             <td>{{ $item->classe->nom_classe}}</td>
                                                             <td>
+                                                                <a class="btn btn-icon" href="{{ route('voir-eleve', ['id' =>$item->eleve->id]) }}"><i class="icon-note"></i> </a>
+                                                                <a class="btn btn-icon"><i class="icon-question"></i> </a>
                                                             </td>
 
                                                         </tr>

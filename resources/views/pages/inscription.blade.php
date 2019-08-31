@@ -1,14 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     {{ csrf_field() }}
-
     @include('layouts.partials.nav_bar')
     @include('layouts.partials.menu_bar')
     <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
-
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -32,7 +28,7 @@
                             </div>
                             <div class="card-content collpase show">
                                 <div class="card-body">
-                                    <form class="form" action="{{ url('inscription')}}" method="post">
+                                    <form class="form" action="{{ route('inscrire')}}" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="annee_scolaire_id" value="{{ $anne->id }}">
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="ft-user"></i>Informations Elève</h4>
@@ -60,7 +56,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput4">date de naissance</label>
-                                                    <input type="date"  class="form-control" placeholder="date naissance" name=" ">
+                                                    <input type="date"  class="form-control" placeholder="date naissance" name="date_naissance">
                                                 </div>
                                             </div>
 

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use \DateTime;
+use Svg\Tag\Image;
 
 class InscriptionController extends Controller
 {
@@ -82,13 +83,15 @@ class InscriptionController extends Controller
                     $eleve->genre = $request->genre;
                 }
 
+                dd($eleve);
+
                 if ($request->hasFile('image'))
                 {
                     $image = $request->file('image');
                     $extension = $image->getClientOriginalExtension();
-                    dd($extension);
                     $image_name = time().'.'.$extension;
-                    $image->move('images/insription', $image_name);
+                    $directory = '/public/uploads/imgs/';
+                    $image->move(base_path().$directory , $image_name);
                     $inscription->image = $image_name;
                 }
                 else

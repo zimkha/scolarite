@@ -15,9 +15,15 @@
     <section id="simple-user-cards" class="row">
         <div class="col-12">
             <h4 class="text-uppercase">{{ $eleve->prenom }} {{ $eleve->nom }}</h4>
-            <p>{{ $classe->nom_classe }}</p>
+            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-bitbucket" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>
+            <br>
+            <br>
+
+
         </div>
+
         <div class="col-xl-3 col-md-6 col-12">
+
             <div class="card">
                 <div class="text-center">
                     <div class="card-body">
@@ -98,7 +104,7 @@
                                     <li><a data-action="collapse"><i class="ft-plus"></i></a></li>
                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -142,7 +148,7 @@
                                     <li><a data-action="collapse"><i class="ft-plus"></i></a></li>
                                     <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -215,6 +221,61 @@
 
             </div>
         </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+
+
+            <div class="modal fade text-left" id="showUpdateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel17">Modifier infos Eleve</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" method="post">
+                                <div class="row">
+                                <div class="form-group col-md-4 mb-2">
+                                    <label for="nom">nom</label>
+                                    <input type="texte" name="nom" value="{{ $eleve->nom }}" class="form-control">
+                                </div>
+                                    <div class="form-group col-md-4 mb-2">
+                                        <label for="nom">prnom</label>
+                                        <input type="texte" name="prenom" value="{{ $eleve->prenom }}" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-4 mb-2">
+                                        <label for="nom">adresse</label>
+                                        <input type="texte" name="adresse" value="{{ $eleve->adresse }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4 mb-2">
+                                        <label for="nom">date naissance</label>
+                                        <input type="date" name="date_naissance" value="{{ $eleve->naissance }}" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-4 mb-2">
+                                        <label for="nom">nom complet tuteur</label>
+                                        <input type="texte" name="nom" value="{{ $eleve->nomcomplet_tuteur }}" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-4 mb-2">
+                                        <label for="nom">nom</label>
+                                        <input type="texte" name="nom" value="{{ $eleve->nom }}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-outline-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
     </div>
     </div>
     </div>

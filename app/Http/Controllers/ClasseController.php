@@ -84,7 +84,24 @@ class ClasseController extends Controller
             });
         }catch(\Exception $exception)
         {
+            return response()->json($exception->getMessage())->header('Content-Type', 'application/json');
+        }
+    }
 
+    /**
+     * @param $id
+     */
+    public  function  show($id)
+    {
+        try{
+            if ($id)
+            {
+                $classe = Classe::find($id);
+
+            }
+        }catch (\Exception $exception)
+        {
+            return response()->json($exception->getMessage())->header('Content-Type', 'application/json');
         }
     }
 }
