@@ -10,12 +10,13 @@ class Classe extends Model
         'nom_classe',
         'niveau_classe_id',
         'somme_inscription',
-        'mensualite'
+        'mensualite',
+        'code_classe'
     ];
 
-    public function niveau()
+    public function niveau_classe()
     {
-        return $this->belongsTo(Niveau::class);
+        return $this->belongsTo(NiveauClasse::class);
     }
     public function inscriptions()
     {

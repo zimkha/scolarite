@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Classe;
+use App\Evaluation;
+use App\Inscription;
+use App\NiveauClasse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ClasseController extends Controller
 {
+    public function index()
+    {
+        $classes = Classe::all();
+        $niveau = NiveauClasse::all();
+        return view('pages.classe', compact('classes', 'niveau'));
+    }
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse|mixed
@@ -94,9 +103,29 @@ class ClasseController extends Controller
     public  function  show($id)
     {
         try{
+            $errors = null;
+            $tab = array();
+            $nb_garcon = 0;
+            $nb_fille = 0;
+            $pourcent = 0;
             if ($id)
             {
-                $classe = Classe::find($id);
+                $classe = Classe::findOrFail($id);
+                if ($classe)
+                {
+                    $inscriptions = Inscription::where('classe_id', $classe->id)->where('annee_scolaire_id', 1)->get();
+                    $evaluations = Evaluation::where('classe_id', $classe->id)->where('annee_scolaire_id', 1)->get();
+                    foreach ($inscriptions as $inscription)
+                    {
+                        if ($inscription->eleve->genre == 1)
+                        {
+                            $nb_garcon = $nb_garcon +1;
+                        }
+                        elseif ($inscription->eleve->genre == 0) $nb_fille =  $nb_fille +1;
+                    }
+
+                    return view('pages.show-classe', compact('classe', 'inscriptions', 'evaluations', 'nb_fille', 'nb_garcon'));
+                }
 
             }
         }catch (\Exception $exception)

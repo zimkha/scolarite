@@ -1,8 +1,11 @@
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js') }}" type="text/javascript"></script>
-<script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}" type="text/javascript"></script>
-<script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.rowReorder.min.js') }}" type="text/javascript"></script>
+<script src="{{asset('assets/data-table/datatables.min.js')}}"></script>
+<script src="{{asset('assets/data-table/datatables-init.js')}}"></script>
+<script src="{{asset('assets/data-table/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/data-table/buttons.bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/data-table/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/data-table/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/data-table/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}" type="text/javascript"></script>
 <!-- END PAGE VENDOR JS-->
 
