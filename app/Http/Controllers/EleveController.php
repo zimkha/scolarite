@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Eleve;
 use App\Inscription;
 use App\Mensuel;
-
+use App\Paiement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -84,29 +84,34 @@ class EleveController extends Controller
             $php_errormsg = null;
             if($id)
             {
-                $eleve = Eleve::find($id);
-                $inscription = Inscription::where('eleve_id', $eleve->id)->get();
-                $classe = [];
-                $single = null;
-                $image = null;
-                $mois = Mensuel::all();
-                $directory = '/public/uploads/imgs/';
-                foreach ($inscription as $item)
-                {
-                  $classe = $item->classe;
-                  $inscri = $item;
-                  $filename = $inscri->image;
-
-                 if (File::exists(base_path().$directory, $filename))
+                 $inscription = Inscription::find($id);
+                 
+                 $eleve = new Eleve();
+                 if($inscription)
                  {
+                    $eleve = Eleve::find($inscription->eleve_id);
+                    $paiements = Paiement::where('inscription_id', $inscription->id)->get();
+                  
+                     
+                    $classe = [];
+                    $single = null;
+                    $image = null;
+                    $mois = Mensuel::all();
+                    $directory = '/public/uploads/imgs/';
+                    $classe = $inscription->classe;
+                    $filename = $inscription->image;
 
-                     $path = base_path().$directory.$filename;
-                     $chemin = 'uploads/imgs/'.$filename;
-                     $image = File::get($path);
+                   if (File::exists(base_path().$directory, $filename))
+                   {
+  
+                       $path = base_path().$directory.$filename;
+                       $chemin = 'uploads/imgs/'.$filename;
+                       $image = File::get($path);
+                   }
                  }
-                }
+               
             }
-            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'inscri', 'image', 'path', 'chemin'));
+            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'image', 'path', 'chemin', 'paiements'));
 
     }
 }

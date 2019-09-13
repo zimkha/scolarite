@@ -111,7 +111,7 @@
                                                             <td>{{ $item->eleve->naissance }}</td>
                                                             <td>{{ $item->classe->nom_classe}}</td>
                                                             <td>
-                                                                <a class="btn btn-icon" href="{{ route('voir-eleve', ['id' =>$item->eleve->id]) }}"><i class="icon-note"></i> </a>
+                                                                <a class="btn btn-icon" href="{{ route('voir-eleve', ['id' =>$item->id]) }}"><i class="icon-note"></i> </a>
                                                                 <a class="btn btn-icon"><i class="icon-question"></i> </a>
                                                             </td>
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCodeClasseToClasses extends Migration
+class AddInscriptionIdToNoteEvaluations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCodeClasseToClasses extends Migration
      */
     public function up()
     {
-        Schema::table('classes', function (Blueprint $table) {
-            $table->string('code_classe')->unique()->nullable();
+        Schema::table('note_evaluations', function (Blueprint $table) {
+            //
         });
     }
 
@@ -25,7 +25,7 @@ class AddCodeClasseToClasses extends Migration
      */
     public function down()
     {
-        Schema::table('classes', function (Blueprint $table) {
+        Schema::table('note_evaluations', function (Blueprint $table) {
             //
         });
     }

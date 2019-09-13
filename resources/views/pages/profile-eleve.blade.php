@@ -13,6 +13,7 @@
         <div class="content-wrapper">
 
     <section id="simple-user-cards" class="row">
+          
         <div class="col-12">
             <h4 class="text-uppercase">{{ $eleve->prenom }} {{ $eleve->nom }}</h4>
             <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-bitbucket" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>
@@ -87,6 +88,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Liste des Paiements de l'eleve</h4>
+                            @if (\Illuminate\Support\Facades\Session::has('message'))
+                            <div class="alert alert-info">{{ Session::get('message') }}</div>
+                        @endif
+                        @if (\Illuminate\Support\Facades\Session::has('error'))
+                            <div class="alert alert-info">{{ Session::get('error') }}</div>
+                        @endif
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                                 <ul class="list-inline mb-0">
@@ -112,15 +119,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Janvier</td>
-                                        <td>250000</td>
-                                        <td>Etat</td>
+                                        @foreach($paiements as $item)
+                                        <tr>
+                                        <td>{{ $item->mois->mois}}</td>
+                                        <td>{{ $item->montant}} Fcfa</td>
+                                        <td>{{ $item->mois->mois}}</td>
+    
                                         <td>
                                             <a  href="" class="btn btn-success " data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
                                         </td>
 
                                     </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -173,22 +183,24 @@
                 </div>
             </div>
         </div>
+       
     </div>
     <div class="modal animated slideInDown text-left" id="showFormPAiment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel77" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel77">Formualire paiment</h4>
+                    <h4 class="modal-title" id="myModalLabel77">Formualire paiement</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-              <form class="form-horizontal" method="post">
-                  <input  type="hidden" name="inscription_id" value="{{ $inscri->id }}">
+              <form class="form-horizontal" method="post" action="{{ route('save-paiement')}}">
+                <input type="hidden" name="inscription" value="">
+                  <input  type="hidden" name="inscription" value="{{ $inscription->id }}">
                   <div class="form-group">
                       <label for="mosi">Mois</label>
-                      <select  name="mois_id" class="form-control">
+                      <select  name="mois" class="form-control">
                           @foreach($mois as $item)
                               <option value="{{$item->id}}">{{ $item->mois }}</option>
                               @endforeach
@@ -199,7 +211,7 @@
                       <label for="montant">
                           Montant
                       </label>
-                      <input type="number" class="form-control" name="montant" required="required">
+                    <input type="number" class="form-control" name="montant" required="required" value="{{ $classe->mensualite }}">
                   </div>
                   <div class="modal-footer">
                       <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>

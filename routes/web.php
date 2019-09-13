@@ -37,3 +37,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile-eleve/{id}', 'EleveController@show')->name('voir-eleve');
+Route::post('/paiement-save', 'PaiementController@save')->name('save-paiement');
+Route::get('/paiement-index', 'PaiementController@index')->name('paiement-index');
