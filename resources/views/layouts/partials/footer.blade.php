@@ -1,11 +1,5 @@
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
-<script src="{{asset('assets/data-table/datatables.min.js')}}"></script>
-<script src="{{asset('assets/data-table/datatables-init.js')}}"></script>
-<script src="{{asset('assets/data-table/dataTables.bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/data-table/buttons.bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/data-table/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('assets/data-table/buttons.colVis.min.js')}}"></script>
-<script src="{{asset('assets/data-table/jquery.dataTables.min.js')}}"></script>
+
 <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}" type="text/javascript"></script>
 <!-- END PAGE VENDOR JS-->
 
@@ -41,6 +35,17 @@
 <!--END ANGULAR JS -->
 
 <script src="{{ asset('app-assets/js/scripts/tables/datatables-extensions/datatables-sources.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/jquery.js')}}"></script>
+<script src="{{ asset('assets/dataTable.min.js')}}"></script>
+<script src="{{ asset('assets/dataTable.bootstrap.min.js')}}"></script>
+
+
+
+<script>
+    $(document).ready(function() {
+    $('#dashboard').DataTable();
+} );
+    </script>
 
 
 

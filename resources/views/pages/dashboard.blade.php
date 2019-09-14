@@ -87,7 +87,7 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
 
-                                    <div id="DataTables_Table_10_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_10_length">
+                                    <div id="dashboard" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_10_length">
                                                     <label>Show <select name="DataTables_Table_10_length" aria-controls="DataTables_Table_10" class="form-control form-control-sm"><option value="10">10</option>
                                                             <option value="25">25</option><option value="50">50</option><option value="100">100</option>
                                                         </select> entries</label></div></div><div class="col-sm-12 col-md-6">
