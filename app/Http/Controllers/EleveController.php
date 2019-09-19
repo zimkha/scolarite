@@ -23,7 +23,7 @@ class EleveController extends Controller
             return DB::transaction(function () use($request){
                 $errors = null;
                 $data = 0;
-                dd($request->all());
+               
                 if(empty($request->id))
                 {
                     $errors ="Les donnees envoye sont manquants";
@@ -41,7 +41,7 @@ class EleveController extends Controller
 
                  if (isset($request->nomcomplet))
                  {
-                     $eleve->nomcomplet       = $request->nomcomplet;
+                     $eleve->nomcomplet_tuteur       = $request->nomcomplet;
                  }
 
                   if (isset($request->adresse_tuteur))
@@ -80,7 +80,7 @@ class EleveController extends Controller
 
     public  function show($id)
     {
-
+       
             $php_errormsg = null;
             if($id)
             {
@@ -99,6 +99,8 @@ class EleveController extends Controller
                     $mois = Mensuel::all();
                     $directory = '/public/uploads/imgs/';
                     $classe = $inscription->classe;
+                   
+
                     $filename = $inscription->image;
 
                    if (File::exists(base_path().$directory, $filename))

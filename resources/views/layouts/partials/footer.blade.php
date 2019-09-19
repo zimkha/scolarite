@@ -34,7 +34,6 @@
 <script src="{{ asset('app-assets/js/core/backoffice.js') }}" type="text/javascript"></script>
 <!--END ANGULAR JS -->
 
-<script src="{{ asset('app-assets/js/scripts/tables/datatables-extensions/datatables-sources.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/jquery.js')}}"></script>
 <script src="{{ asset('assets/dataTable.min.js')}}"></script>
 <script src="{{ asset('assets/dataTable.bootstrap.min.js')}}"></script>

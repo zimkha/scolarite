@@ -1,0 +1,15 @@
+// Modals
+
+.Mymodal-header,
+.Mymodal-footer {
+    background: $gray-100;
+}
+
+.Mymodal-footer {
+    @include border-bottom-radius($border-radius);
+}
+
+.Mymodal-dialog {
+    box-shadow: $box-shadow-lg-default;
+    @include border-radius($border-radius);
+}

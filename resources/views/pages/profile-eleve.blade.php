@@ -11,16 +11,65 @@
 
     <div class="app-content content">
         <div class="content-wrapper">
+                <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
+                                                <div class="float-left pl-2">
+                                                    <span class="grey darken-1 block">Age</span>
+                                                    <span class="font-large-3 line-height-1 text-bold-300">10</span>
+                                                </div>
+                                                <div class="float-left mt-2">
+                                                    <span class="grey darken-1 block">Years</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
+                                                <div class="float-left pl-2">
+                                                    <span class="grey darken-1 block">Sexe</span>
+                                                    <span class="font-large-3 line-height-1 text-bold-300">185</span>
+                                                </div>
+                                                <div class="float-left mt-2">
+                                                    <span class="grey darken-1 block">cm</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
+                                                <div class="float-left pl-2">
+                                                    <span class="grey darken-1 block">Mensualite</span>
+                                                    <span class="font-large-3 line-height-1 text-bold-300">A jours</span>
+                                                </div>
+                                                <div class="float-left mt-2">
+                                                    <span class="grey darken-1 block"></span>
+                                                    <span class="block"><i class="ft-arrow-down deep-orange accent-3"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-6 col-md-12 clearfix">
+                                                <div class="float-left pl-2">
+                                                    <span class="grey darken-1 block">Type Eleve</span>
+                                                    <span class="font-large-3 line-height-1 text-bold-300">moyen</span>
+                                                </div>
+                                                <div class="float-left mt-2">
+                                                    <span class="grey darken-1 block"></span>
+                                                    <span class="block"><i class="ft-arrow-up success"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
     <section id="simple-user-cards" class="row">
           
         <div class="col-12">
             <h4 class="text-uppercase">{{ $eleve->prenom }} {{ $eleve->nom }}</h4>
-            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-bitbucket" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>
+            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>  <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Paiement Groupe</button>
+        
             <br>
             <br>
-
-
         </div>
 
         <div class="col-xl-3 col-md-6 col-12">
@@ -46,20 +95,15 @@
 
                      <table class="table table-striped">
                         <tr>
-                            <td>Nom complet</td> <td>Ndiaye Amathe</td>
+                        <td>Nom complet</td> <td>{{ $eleve->nomcomplet_tuteur }}</td>
                         </tr>
                          <tr>
-                             <td>Adresse</td> <td>Parcellles</td>
+                             <td>Adresse</td> <td>{{ $eleve->adresse_tuteur }}</td>
                          </tr>
                          <tr>
-                             <td>Contact</td> <td>771897865</td>
+                             <td>Contact</td> <td>{{ $eleve->telephone }}</td>
                          </tr>
-                         <tr>
-                             <td>Contact</td> <td>771897865</td>
-                         </tr>
-                         <tr>
-                             <td>Contact</td> <td>771897865</td>
-                         </tr>
+                         
                      </table>
                     </div>
 
@@ -106,7 +150,7 @@
                         </div>
                         <div class="card-content collapse show" style="">
                             <div class="card-body card-dashboard">
-                               <button class="btn btn-bitbucket" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
+                               <button class="btn btn-info" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
                             </div>
                             <div class="table-responsive">
                                 <table class="table mb-0">
@@ -153,7 +197,7 @@
                         </div>
                         <div class="card-content collapse show" style="">
                             <div class="card-body card-dashboard">
-                                <button class="btn btn-bitbucket" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
+                                <button class="btn btn-info" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
                             </div>
                             <div class="table-responsive">
                                 <table class="table mb-0">
@@ -274,7 +318,7 @@
 
                                 <div class="modal-footer">
                                     <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit"  name="updateEleve" class="btn btn-outline-primary">Save changes</button>
+                                    <button type="submit"  name="updateEleve" class="btn btn-success">Save changes</button>
                                 </div>
                             </form>
                         </div>
