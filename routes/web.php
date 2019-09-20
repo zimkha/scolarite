@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('pages/index');
 });
 
-
 Route::get('/dashboard', 'HomeController@index');
 
 Route::get('/inscription', 'InscriptionController@index');
