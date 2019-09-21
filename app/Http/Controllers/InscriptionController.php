@@ -103,7 +103,8 @@ class InscriptionController extends Controller
                 $inscription->classe_id     = $request->classe_id;
                 $inscription->annee_scolaire_id = $request->annee_scolaire_id;
                 $classe  = Classe::find($request->classe_id);
-                $inscription->somme_inscription = $classe->somme_isncription;
+                $inscription->somme_inscription = $classe->somme_inscription;
+
                 $inscription->etat_inscription = true;
                 $inscription->user_id = 1;
                 if ($errors == null)
