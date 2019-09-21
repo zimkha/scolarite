@@ -1,5 +1,5 @@
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/dataTable.min.js')}}"></script>
+<script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
 
 <script src="{{ asset('app-assets/vendors/js/forms/icheck/icheck.min.js') }}" type="text/javascript"></script>
 <!-- END PAGE VENDOR JS-->
@@ -32,13 +32,13 @@
 <!--  ANGULAR JS-->
 <script src="{{ asset('app-assets/js/core/angular.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/js/core/angular-ngtable.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('app-assets/js/core/backoffice.js') }}" type="text/javascript"></script>
+
 <!--END ANGULAR JS -->
 
 
 <script src="{{ asset('app-assets/js/scripts/tables/datatables/datatable-basic.js') }}" type="text/javascript"></script>
 
-<script src="{{ asset('assets/dataTable.bootstrap.min.js')}}"></script>
+<script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}"></script>
 
 
 

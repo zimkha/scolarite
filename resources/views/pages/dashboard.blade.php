@@ -158,12 +158,10 @@
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
 
-                                    <div id="dashboard" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_10_length">
-                                                    <label>Show <select name="DataTables_Table_10_length" aria-controls="DataTables_Table_10" class="form-control form-control-sm"><option value="10">10</option>
-                                                            <option value="25">25</option><option value="50">50</option><option value="100">100</option>
-                                                        </select> entries</label></div></div><div class="col-sm-12 col-md-6">
-                                                <div id="DataTables_Table_10_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="DataTables_Table_10"></label>
-                                                </div></div></div><div class="row"><div class="col-sm-12"><table class="table table-striped table-bordered comma-decimal-place dataTable" id="DataTables_Table_10" role="grid" aria-describedby="DataTables_Table_10_info">
+                                    <div id="dashboard" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                       
+                                                <div class="row">
+                                                    <div class="col-sm-12"><table class="table table-striped table-bordered comma-decimal-place dataTable" id="DataTables_Table_10" role="grid" aria-describedby="DataTables_Table_10_info">
                                                     <thead>
                                                     <tr role="row">
                                                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 238px;">Matricule</th>

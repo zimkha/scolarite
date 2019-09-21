@@ -22,9 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/components.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/colors/palette-gradient.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/icheck/icheck.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/forms/icheck/custom.css') }}">
