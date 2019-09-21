@@ -38,10 +38,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile-eleve/{id}', 'EleveController@show')->name('voir-eleve');
 Route::post('/paiement-save', 'PaiementController@save')->name('save-paiement');
 Route::get('/paiement-index', 'PaiementController@index')->name('paiement-index');
-<<<<<<< HEAD
+
 Route::post('/paiement-dispatch','PaiementController@savePaiementDispatch')->name('savePaiementDispatch');
 
 Route::get('/matieres', 'MatiereController@index')->name('list-matiere');
 Route::post('/matiere-save', 'MatiereController@save')->name('matiere-save');
-=======
->>>>>>> 0dc8782f0b1a1efece1bd551c9b168b79d4d1129
