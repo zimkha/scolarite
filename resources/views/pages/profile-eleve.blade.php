@@ -66,8 +66,7 @@
           
         <div class="col-12">
             <h4 class="text-uppercase">{{ $eleve->prenom }} {{ $eleve->nom }}</h4>
-            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>  <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Paiement Groupe</button>
-        
+            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>  
             <br>
             <br>
         </div>
@@ -151,6 +150,8 @@
                         <div class="card-content collapse show" style="">
                             <div class="card-body card-dashboard">
                                <button class="btn btn-info" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
+                               <button class="btn btn-info" data-toggle="modal" data-target="#showPaiemenGroup">Paiement Groupe</button>
+        
                             </div>
                             <div class="table-responsive">
                                 <table class="table mb-0">
@@ -240,6 +241,44 @@
                 </div>
                 <div class="modal-body">
               <form class="form-horizontal" method="post" action="{{ route('save-paiement')}}">
+                <input type="hidden" name="inscription" value="">
+                  <input  type="hidden" name="inscription" value="{{ $inscription->id }}">
+                  <div class="form-group">
+                      <label for="mosi">Mois</label>
+                      <select  name="mois" class="form-control">
+                          @foreach($mois as $item)
+                              <option value="{{$item->id}}">{{ $item->mois }}</option>
+                              @endforeach
+                      </select>
+
+                  </div>
+                  <div class="form-group">
+                      <label for="montant">
+                          Montant
+                      </label>
+                    <input type="number" class="form-control" name="montant" required="required" value="{{ $classe->mensualite }}">
+                  </div>
+                  <div class="modal-footer">
+                      <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>
+                      <button type="submit" class="btn btn-outline-success">Enregistre</button>
+                  </div>
+              </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal animated slideInDown text-left" id="showPaiemenGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel77" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel77">Formualire paiement Groupe</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+              <form class="form-horizontal" name="paiementGroupe" method="post" action="{{ route('savePaiementDispatch')}}">
                 <input type="hidden" name="inscription" value="">
                   <input  type="hidden" name="inscription" value="{{ $inscription->id }}">
                   <div class="form-group">
