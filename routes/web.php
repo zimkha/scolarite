@@ -43,3 +43,4 @@ Route::post('/paiement-dispatch','PaiementController@savePaiementDispatch')->nam
 
 Route::get('/matieres', 'MatiereController@index')->name('list-matiere');
 Route::post('/matiere-save', 'MatiereController@save')->name('matiere-save');
+Route::post('/matiere-show/{id}', 'MatiereController@show')->name('matiere-show');

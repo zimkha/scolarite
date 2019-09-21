@@ -94,8 +94,7 @@ class InscriptionController extends Controller
                     $image->move(base_path().$directory , $image_name);
                     $inscription->image = $image_name;
                 }
-                else
-                    return 'false';
+                
                 $matricule                  = strtoupper(substr($request->nom_eleve, 0,1).
                                                 substr($request->prenom_eleve, 0,1))."-".rand(10000,99999);
                 $eleve->matricule           = $matricule;
@@ -104,7 +103,7 @@ class InscriptionController extends Controller
                 $inscription->annee_scolaire_id = $request->annee_scolaire_id;
                 $classe  = Classe::find($request->classe_id);
                 $inscription->somme_inscription = $classe->somme_inscription;
-
+                
                 $inscription->etat_inscription = true;
                 $inscription->user_id = 1;
                 if ($errors == null)

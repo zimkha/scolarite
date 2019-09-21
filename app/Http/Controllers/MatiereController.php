@@ -56,4 +56,31 @@ class MatiereController extends Controller
            return  response()->json()->header('Content-Type', 'applcation/json');
        }
    }
+   public function show($id)
+   {
+       try{
+        return DB::transaction(function() use($id){
+            $errors = null;
+            if($id)
+            {
+                $matiere = Matiere::find($id);
+                if($matiere)
+                {
+                  
+                }
+                else
+                {
+                    $errors = "Erreur : Matiere inexistant dans la base de données";
+                }
+            }
+            else
+            {
+                $errors ="Erreur: Contacter le service technique";
+            }
+        });
+       }catch(\Exception $ex)
+       {
+           return response()->json($ex->getMessage())->headre('Content-Type', 'appliation/json');
+       }
+   }
 }

@@ -6,7 +6,7 @@
         <li class=" nav-item"><a href="{{ url('inscription')}}"><i class="icon-info"></i>Inscription</a></li>
             <li class=" nav-item"><a href="{{ route('home-classe')}}"><i class="icon-note"></i>Classe</a></li>
             <li class=" nav-item"><a href="#"><i class="icon-graduation"></i>Evaluation</a></li>
-            <li class=" nav-item"><a href="#"><i class="icon-notebook"></i>Matiere</a></li>
+            <li class=" nav-item"><a href="{{ route('list-matiere')}}"><i class="icon-notebook"></i>Matiere</a></li>
             <li class=" nav-item"><a href="{{ route('paiement-index')}}"><i class="icon-paypal"></i>Payement</a></li>
 
             <li class=" nav-item"><a href="#"><i class="icon-settings"></i>Parametre</a>
@@ -15,7 +15,9 @@
                     <li><a href="#">Utilisateurs</a> </li>
                 </ul>
             </li>
-
+            <li class="navigation-header"><span data-i18n="nav.category.forms">Gestions Administration</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Forms"></i>
+            </li>
         </ul>
+        
     </div>
 </div>

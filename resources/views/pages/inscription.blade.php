@@ -38,11 +38,11 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4 mb-2">
                                                     <label for="projectinput1">Nom</label>
-                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nom_eleve">
+                                                    <input type="text" required="required"  id="projectinput1" class="form-control" placeholder="nom" name="nom_eleve">
                                                 </div>
                                                 <div class="form-group col-md-4 mb-2">
                                                     <label for="projectinput2">Prenom</label>
-                                                    <input type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom_eleve">
+                                                    <input required="required"  type="text" id="projectinput2" class="form-control" placeholder="prenom" name="prenom_eleve">
                                                 </div>
                                                 <div class="form-group col-md-4 mb-2">
                                                     <label for="projectinput2">Genre</label>
@@ -59,7 +59,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput4">date de naissance</label>
-                                                    <input type="date"  class="form-control" placeholder="date naissance" name="date_naissance">
+                                                    <input type="date" required="required"   class="form-control" placeholder="date naissance" name="date_naissance">
                                                 </div>
                                             </div>
 
@@ -88,8 +88,11 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="form-group col-12 mb-2">
-                                                        <input type="file" name="image" class="form-control">
+                                                <div class="form-group col-6 mb-2">
+                                                        <input type="file" name="image" title="chosir une photo" class="form-control">
+                                                </div>
+                                                <div class="form-group col-6 mb-2">
+                                                        <input type="number" name="montant" placeholder="montant inscription" required="required" class="form-control">
                                                 </div>
                                             </div>
                                             <h4 class="form-section"><i class="ft-user"></i>Informations Tuteur</h4>

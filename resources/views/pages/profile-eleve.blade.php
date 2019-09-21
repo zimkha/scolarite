@@ -20,7 +20,7 @@
                                             <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
                                                 <div class="float-left pl-2">
                                                     <span class="grey darken-1 block">Age</span>
-                                                    <span class="font-large-3 line-height-1 text-bold-300">10</span>
+                                                    <span class="font-large-3 line-height-1 text-bold-300">{{ $age }}</span>
                                                 </div>
                                                 <div class="float-left mt-2">
                                                     <span class="grey darken-1 block">Years</span>

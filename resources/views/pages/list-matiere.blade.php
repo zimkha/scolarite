@@ -34,17 +34,26 @@
                         </div>
                         <div class="card-content collapse show">
                                 <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-hover">
                                             <thead class="bg-success white">
                                                 <tr>
                                                     <th>code</th>
                                                     <th>libelle</th>
-                                                    <th>coef</th>
+                                                    
                                                     <th>actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               
+                                               @foreach($matieres as $item)
+                                               <tr align="center">
+                                               <td>{{ $item->slug}}</td>
+                                               <td>{{ $item->nom_matiere}}</td>
+                                               <td>
+                                                    <a class="btn btn-icon" href="#"><i class="icon-note"></i> </a>
+                                                    <a class="btn btn-icon" href="#"><i class="icon-question"></i> </a>
+                                                </td>
+                                               </tr>
+                                               @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -36,6 +36,7 @@ class EleveController extends Controller
                    }
                    if (isset($request->date_naissance))
                    {
+                     
                        $eleve->naissance        = $request->date_aissance;
                    }
 
@@ -51,11 +52,15 @@ class EleveController extends Controller
                    if(isset($request->telephone)) $eleve->telephone = $request->telephone;
                    if ($errors == null)
                    {
-                       $eleve->nom  = $request->nom;
-                       $eleve->prenom = $request->prenom;
-                       $eleve->adresse  = $request->adresse;
+                       $eleve->nom              = $request->nom;
+                       $eleve->prenom           = $request->prenom;
+                       $eleve->adresse          = $request->adresse;
+                       $eleve->naissance        = $request->date_naissance;
+                      
                        $eleve->save();
-                       return redirect()->route('voir-eleve', ['id' => $eleve->id]);
+                       $inscription = Inscription::where('eleve_id', $eleve->id)->get()->last();
+                       
+                       return redirect()->route('voir-eleve', ['id' => $inscription->id]);
                    }
                    else return response()->json($errors);
                 }
@@ -82,16 +87,25 @@ class EleveController extends Controller
     {
        
             $php_errormsg = null;
+            $date = date('Y');
+            $age = 0;
             if($id)
             {
                  $inscription = Inscription::find($id);
                  
                  $eleve = new Eleve();
+                
                  if($inscription)
                  {
                     $eleve = Eleve::find($inscription->eleve_id);
                     $paiements = Paiement::where('inscription_id', $inscription->id)->get();
-                  
+                    if($eleve->naissance)
+                    {
+                      $anne_ele = $eleve->naissance;
+                      $anne = date("Y", strtotime($anne_ele));
+                      $age = $date - $anne;
+                    }
+
                      
                     $classe = [];
                     $single = null;
@@ -113,7 +127,7 @@ class EleveController extends Controller
                  }
                
             }
-            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'image', 'path', 'chemin', 'paiements'));
+            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'image', 'path', 'chemin', 'paiements', 'age'));
 
     }
 }
