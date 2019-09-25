@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('pages/index');
-});
+    $anne_sco = App\AnneeScolaire::all();
+    
+    return view('pages/index', compact('anne_sco'));
+})->middleware('auth');
 
 Route::get('/dashboard', 'HomeController@index');
 
@@ -44,3 +46,9 @@ Route::post('/paiement-dispatch','PaiementController@savePaiementDispatch')->nam
 Route::get('/matieres', 'MatiereController@index')->name('list-matiere');
 Route::post('/matiere-save', 'MatiereController@save')->name('matiere-save');
 Route::post('/matiere-show/{id}', 'MatiereController@show')->name('matiere-show');
+
+Route::post('/professeur', 'ProfesseurController@save');
+Route::get('/professeurs', 'ProfesseurController@index')->name('liste-prof');
+Route::get('/professeur/detail/{id}', 'ProfesseurController@show');
+Route::delete('/professeur/delete/{id}', 'ProfesseurController@delete');
+

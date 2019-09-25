@@ -30,8 +30,7 @@
 <script src="{{ asset('app-assets/js/scripts/customizer.js') }}" type="text/javascript"></script>
 
 <!--  ANGULAR JS-->
-<script src="{{ asset('app-assets/js/core/angular.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('app-assets/js/core/angular-ngtable.min.js') }}" type="text/javascript"></script>
+
 
 <!--END ANGULAR JS -->
 
@@ -39,7 +38,12 @@
 <script src="{{ asset('app-assets/js/scripts/tables/datatables/datatable-basic.js') }}" type="text/javascript"></script>
 
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('assets/js/angular/select2.min.js')}}"></script>
 
-
+<script>
+    $("select.select2").select2({
+        tags: true
+    });
+</script>
 
 

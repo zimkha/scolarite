@@ -127,7 +127,7 @@
 
     </section>
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Liste des Paiements de l'eleve</h4>
@@ -182,50 +182,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Liste des Paiements de l'eleve</h4>
-                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li><a data-action="collapse"><i class="ft-plus"></i></a></li>
-                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-content collapse show" style="">
-                            <div class="card-body card-dashboard">
-                                <button class="btn btn-info" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th>Mois</th>
-                                        <th>Montant</th>
-                                        <th>Etat</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Janvier</td>
-                                        <td>250000</td>
-                                        <td>Etat</td>
-                                        <td>
-                                            <a href="" class="btn btn-success" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
-                                        </td>
-
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
        
@@ -234,7 +191,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel77">Formualire paiement</h4>
+                    <h4 class="modal-title" id="myModalLabel77">Formualaire paiement</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -357,7 +314,7 @@
 
                                 <div class="modal-footer">
                                     <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit"  name="updateEleve" class="btn btn-success">Save changes</button>
+                                    <button type="submit"  name="updateEleve" class="btn btn-success">Enregistre</button>
                                 </div>
                             </form>
                         </div>

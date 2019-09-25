@@ -6,6 +6,8 @@ use App\Mensuel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Paiement;
+use App\Inscription;
+use App\Eleve;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 class PaiementController extends Controller
@@ -20,6 +22,7 @@ class PaiementController extends Controller
            
             $errors =  null;
             $item = new Paiement();
+            
             if(isset($request->id))
             {
                 $item = Paiement::find($request->id);
@@ -30,6 +33,7 @@ class PaiementController extends Controller
             }
             if($errors == null)
             {
+               
                 $montant     = $request->montant;
                 $mois        = $request->mois;
                 $inscription = $request->inscription;
@@ -37,15 +41,14 @@ class PaiementController extends Controller
                 $item->inscription_id = $inscription;
                 $item->mois_id        = $mois;
                 $item->montant        = $montant;
-
+                $item->user_id        = 1;
                 $item->save();
-                Session::flash('message', "Paiement bien enregistre");
-                return Redirect::back();
+                return redirect()->route('voir-eleve', ['id' => $inscription]);
             }
             else
             {
                 Session::flash('error', $errors);
-                return Redirect::back();
+                return redirect()->route('voir-eleve', ['id' => $inscription]);
             }
         });
       }
@@ -65,7 +68,8 @@ class PaiementController extends Controller
     }
     public function index()
     {
-        return view('pages.paiement');
+        $mois = Mensuel::all();
+        return view('pages.paiement', compact('mois'));
     }
 
     public function savePaiementDispatch(Request $request)
@@ -74,7 +78,7 @@ class PaiementController extends Controller
             return DB::transaction(function() use($request){
               $errors = null;
               $eleve = null;
-
+         
               $item = new Paiement();
               if(isset($request->id))
               {
@@ -83,6 +87,12 @@ class PaiementController extends Controller
               if(isset($request->matricule))
               {
                   $eleve = Eleve::where('matricule', $request->matricule)->get();
+                  dd(count($eleve));
+                  if(count($eleve) == 0)
+                  {
+                    dd($eleve);
+                   $errors = "Cette eleve avec cette matricule ".$request->matricule. " est introuvable dans la base";
+                  }
               }
               if(empty($request->montant))
               {
@@ -91,6 +101,11 @@ class PaiementController extends Controller
               if(empty($request->mois_id))
               {
                 $errors ="Erreur: Veuillez préciser le mois";
+              }
+              if($errors)
+              {
+                Session::flash('message', $errors);
+                return Redirect::back(); 
               }
               $inscription = Inscription::where('eleve_id', $eleve->id)->where('annee_scolaire_id', 1)->first();
               $paiements   = Paiement::where('inscription_id', $inscription->id);
