@@ -186,7 +186,7 @@
 <footer class="footer fixed-bottom  navbar-border">
     <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 text-center">
         <span class="float-md-left d-block d-md-inline-block">Copyright © 2019 <a class="text-bold-800 grey darken-2" href="" target="_blank">SCOLARITE</a>,
-            Tous droits réservés. Designed By
+            Tous droits réservés.
         </span>
     </p>
 </footer>
