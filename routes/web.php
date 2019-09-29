@@ -23,6 +23,11 @@ Route::get('/inscription', 'InscriptionController@index');
 
 
 
+Route::get('/depenses', 'DepenseController@index')->name('liste-depense');
+Route::post('/depense', 'DepenseController@save')->name('save-depense');
+Route::get('/depense/show/{id}', 'DepenseController@show')->name('show-depense');
+Route::delete('/depense/delete/{id}', 'DepenseController@delete')->name('delete-depense');
+
 
 Route::post('/classe', 'ClasseController@save');
 Route::get('/classe-index', 'ClasseController@index')->name('home-classe');
@@ -47,8 +52,10 @@ Route::get('/matieres', 'MatiereController@index')->name('list-matiere');
 Route::post('/matiere-save', 'MatiereController@save')->name('matiere-save');
 Route::post('/matiere-show/{id}', 'MatiereController@show')->name('matiere-show');
 
-Route::post('/professeur', 'ProfesseurController@save');
+Route::post('/professeur', 'ProfesseurController@save')->name('save-prof');
 Route::get('/professeurs', 'ProfesseurController@index')->name('liste-prof');
-Route::get('/professeur/detail/{id}', 'ProfesseurController@show');
+Route::get('/professeur/detail/{id}', 'ProfesseurController@show')->name('show-prof');
 Route::delete('/professeur/delete/{id}', 'ProfesseurController@delete');
+Route::post('/professeur-witheclasse', 'ProfesseurController@saveProfWithClasse')->name('save-Prof-With-Classe');
+Route::post('/professeur-withe-matiere-enseigne', 'ProfesseurController@saveProfWithMatiere')->name('matier-par-prfesseur');
 

@@ -28,17 +28,19 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
                                                 <div class="float-left pl-2">
-                                                    <span class="grey darken-1 block">Sexe</span>
-                                                    <span class="font-large-3 line-height-1 text-bold-300">185</span>
+                                                   <span class="grey darken-1 block"> Genre</span>
+                                                    @if($eleve->genre == 1)
+                                                        <span class="font-large-3 line-height-1 text-bold-300">Masulin</span>
+                                                    @else
+                                                        <span class="font-large-3 line-height-1 text-bold-300">Feminin</span>
+                                                    @endif
                                                 </div>
-                                                <div class="float-left mt-2">
-                                                    <span class="grey darken-1 block">cm</span>
-                                                </div>
+
                                             </div>
                                             <div class="col-xl-3 col-lg-6 col-md-12 border-right-grey border-right-lighten-3 clearfix">
                                                 <div class="float-left pl-2">
                                                     <span class="grey darken-1 block">Mensualite</span>
-                                                    <span class="font-large-3 line-height-1 text-bold-300">A jours</span>
+                                                    <span class="font-large-3 line-height-1 text-bold-300">{{ $etat }}</span>
                                                 </div>
                                                 <div class="float-left mt-2">
                                                     <span class="grey darken-1 block"></span>
@@ -67,7 +69,7 @@
           
         <div class="col-12">
             <h4 class="text-uppercase">{{ $eleve->prenom }} {{ $eleve->nom }}</h4>
-            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>
+            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-blue" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>
             <a class="btn btn-icon" href="#" title="certificat d'inscription"><i class="icon-graduation"></i></a>
             <a class="btn btn-icon" href="#" title="recapitulatif eleve"  data-toggle="modal" data-target="#showRecap"><i class="icon-magic-wand"></i> </a>
 
@@ -136,10 +138,10 @@
                         <div class="card-header">
                             <h4 class="card-title">Liste des Paiements de l'eleve</h4>
                             @if (\Illuminate\Support\Facades\Session::has('message'))
-                            <div class="alert alert-info">{{ Session::get('message') }}</div>
+                            <div class="alert alert-blue">{{ Session::get('message') }}</div>
                         @endif
                         @if (\Illuminate\Support\Facades\Session::has('error'))
-                            <div class="alert alert-info">{{ Session::get('error') }}</div>
+                            <div class="alert alert-blue">{{ Session::get('error') }}</div>
                         @endif
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
@@ -153,8 +155,8 @@
                         </div>
                         <div class="card-content collapse show" style="">
                             <div class="card-body card-dashboard">
-                               <button class="btn btn-info" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
-                               <button class="btn btn-info" data-toggle="modal" data-target="#showPaiemenGroup">Paiement Groupe</button>
+                               <button class="btn btn-blue" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
+                               <button class="btn btn-blue" data-toggle="modal" data-target="#showPaiemenGroup">Paiement Groupe</button>
 
 
                             </div>
@@ -164,6 +166,7 @@
                                     <tr>
                                         <th>Mois</th>
                                         <th>Montant</th>
+                                        <th>Date paiement</th>
                                         <th>Etat</th>
                                         <th>Action</th>
                                     </tr>
@@ -173,10 +176,26 @@
                                         <tr>
                                         <td>{{ $item->mois->mois}}</td>
                                         <td>{{ $item->montant}} Fcfa</td>
-                                        <td>{{ $item->mois->mois}}</td>
+                                            <td>{{ date_format($item->created_at, 'd-m-y') }}</td>
+                                            <?php
+                                            if ($item->montant == $classe->mensualite)
+                                            {
+                                            ?>
+                                            <td><div class="badge badge-success">Complet</div></td>
+                                            <?php
+                                            }
+                                            ?>
+                                            <?php
+                                            if ($item->montant < $classe->mensualite)
+                                            {
+                                            ?>
+                                            <td><div class="badge badge-danger">Incomplet</div></td>
+                                            <?php
+                                            }
+                                            ?>
     
                                         <td>
-                                            <a  href="" class="btn btn-success " data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
+                                            <a  href="" class="btn btn-icon " data-toggle="dropdown"aria-haspopup="true" title="consulter" aria-expanded="false"><i class="icon-action-redo"></i> </a>
                                         </td>
 
                                     </tr>
@@ -240,14 +259,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" method="post" action="{{ route('save-paiement')}}">
+                    <form class="form-horizontal" method="post" action="{{ route('savePaiementDispatch')}}">
                         <input type="hidden" name="inscription" value="">
-                        <input  type="hidden" name="inscription" value="{{ $inscription->id }}">
+                        <input  type="hidden" name="inscription_id" value="{{ $inscription->id }}">
                         <div class="form-group">
                             <label for="montant">
                                 Montant
                             </label>
-                            <input type="number" class="form-control" name="somme_entre" required="required">
+                            <input type="number" class="form-control" name="somme_entre" placeholder="entreb la somme" required="required">
                         </div>
                         <div class="modal-footer">
                             <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>
@@ -340,25 +359,36 @@
                                     <div class="card-content collapse show" style="">
 
                                         <div class="table-responsive">
-                                            <table class="table mb-0">
+                                            <table class="table mb-0 table-bordered table-hover">
                                                 <thead>
-                                                <tr>
+                                                <tr align="center">
                                                     <th>Mois</th>
                                                     <th>Montant</th>
                                                     <th>Etat</th>
-                                                    <th>Action</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($paiements as $item)
-                                                    <tr>
+                                                    <tr align="center">
                                                         <td>{{ $item->mois->mois}}</td>
                                                         <td>{{ $item->montant}} Fcfa</td>
-                                                        <td>{{ $item->mois->mois}}</td>
-
-                                                        <td>
-                                                            <a  href="" class="btn btn-success " data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
-                                                        </td>
+                                                        <?php
+                                                        if ($item->montant == $classe->mensualite)
+                                                            {
+                                                            ?>
+                                                        <td><div class="badge badge-success">Complet</div></td>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        <?php
+                                                        if ($item->montant < $classe->mensualite)
+                                                        {
+                                                        ?>
+                                                        <td><div class="badge badge-danger">Incomplet</div></td>
+                                                        <?php
+                                                        }
+                                                        ?>
 
                                                     </tr>
                                                 @endforeach

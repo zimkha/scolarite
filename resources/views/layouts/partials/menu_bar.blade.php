@@ -18,7 +18,7 @@
             <li class="navigation-header"><span data-i18n="nav.category.forms">Gestions Administration</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Forms"></i>
             </li>
             <li class=" nav-item"><a href="{{ route('liste-prof') }}"><i class="icon-notebook"></i>Professeur</a></li>
-            <li class=" nav-item"><a href="#"><i class="icon-paypal"></i>Depenses</a></li>
+            <li class=" nav-item"><a href="{{ route('liste-depense') }}"><i class="icon-paypal"></i>Depenses</a></li>
         </ul>
         
     </div>

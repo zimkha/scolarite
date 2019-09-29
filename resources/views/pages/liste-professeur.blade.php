@@ -15,10 +15,17 @@
                     <section id="configuration">
                         <div class="row">
                             <div class="col-12">
-                                <button class="btn btn-info" data-toggle="modal" data-target="#showFormProf">Ajouter</button> <br> <br>
+                                <button class="btn btn-blue" data-toggle="modal" data-target="#showFormProf">Ajouter</button> <br> <br>
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title">Liste des Professeur College </h4>
+                                        <br>
+                                        @if (\Illuminate\Support\Facades\Session::has('message'))
+                                            <div class="alert alert-info">{{ Session::get('message') }}</div>
+                                        @endif
+                                        @if (\Illuminate\Support\Facades\Session::has('error'))
+                                            <div class="alert alert-info">{{ Session::get('error') }}</div>
+                                        @endif
                                         <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                         <div class="heading-elements">
                                             <ul class="list-inline mb-0">
@@ -36,7 +43,7 @@
 
                                                 <div class="row"><div class="col-sm-12">
                                                         <table class="table table-striped table-bordered zero-configuration dataTable" id="dataInscription" role="grid" aria-describedby="dataInscription">
-                                                            <thead>
+                                                            <thead class="bg-blue white" >
                                                             <tr role="row" align="center">
                                                                 <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 235px;">N°</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 354px;">Matrucule</th>
@@ -60,7 +67,7 @@
                                                                     <td>{{ $item->telephone }}</td>
 
                                                                     <td>
-                                                                        <a class="btn btn-icon" href="#"><i class="icon-note"></i> </a>
+                                                                        <a class="btn btn-icon" href="{{ route('show-prof', ['id' => $item->id]) }}"><i class="icon-note"></i> </a>
                                                                         <a class="btn btn-icon" href="#"><i class="icon-question"></i> </a>
                                                                     </td>
                                                                 </tr>
@@ -105,19 +112,19 @@
                         <i class=" icon-user-following "></i>
                         Informations Personnelle
                     </h4>
-                    <form class="form-horizontal" method="post" action="{{ route('matiere-save')}}">
+                    <form class="form-horizontal" method="post" action="{{ route('save-prof')}}">
 
                        <div class="row">
                            <div class="col-6">
                                <div class="form-group">
                                    <label for="mosi">Nom</label>
-                                   <input type="text" name="matiere" class="form-control">
+                                   <input type="text" name="nom" class="form-control">
                                </div>
                            </div>
                            <div class="col-6">
                                <div class="form-group">
                                    <label for="mosi">Prenom</label>
-                                   <input type="text" name="matiere" class="form-control">
+                                   <input type="text" name="prenom" class="form-control">
                                </div>
                            </div>
                        </div>
@@ -125,13 +132,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="mosi">Email</label>
-                                    <input type="text" name="matiere" class="form-control">
+                                    <input type="text" name="email" class="form-control">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="mosi">Telephone</label>
-                                    <input type="text" name="matiere" class="form-control">
+                                    <input type="text" name="telephone" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -145,22 +152,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="form-section animated fadeInDown mb-3 border-bottom border-alternate">
-                            <i class="icon-grid "></i>
-                            Affiliations Classes & Matieres
-                        </h4>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="classe">Classe(s)</label>
-                                    <select class="form-control select2" multiple="multiple">
-                                        <option selected="">orange</option>
-                                        <option>white</option>
-                                        <option selected="selected">purple</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="modal-footer">
                             <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>
                             <button type="submit" class="btn btn-outline-success">Enregistre</button>

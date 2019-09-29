@@ -22,13 +22,14 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                        <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                             <div class="pb-1">
                                                 <div class="clearfix mb-1">
                                                     <i class="icon-star font-large-1 blue-grey float-left mt-1"></i>
                                                     <span class="font-large-2 text-bold-300 info float-right">{{ number_format($somme,0,'.',' ')}} </span>
                                                 </div>
                                                 <div class="clearfix">
+                                                    <a><span class="info ft-info" title="inscriptions journalier"> </span></a>&nbsp;
                                                     <span class="text-muted">Inscriptions</span>
                                                     <span class="info float-right"><i class="ft-arrow-up info"></i> 16.89%</span>
                                                 </div>
@@ -37,14 +38,16 @@
                                                 <div class="progress-bar bg-info" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                        <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                             <div class="pb-1">
                                                 <div class="clearfix mb-1">
-                                                    <i class="icon-user font-large-1 blue-grey float-left mt-1"></i>
+
+                                                    <i class="icon-basket-loaded font-large-1 blue-grey float-left mt-1"></i>
                                                 <span class="font-large-2 text-bold-300 danger float-right">{{ number_format($somme_mensualite,0,'.',' ')}}</span>
                                                 </div>
                                                 <div class="clearfix">
-                                                    <span class="text-muted">Mensualite</span>
+                                                    <a><span class="info ft-eye" title="liste Mensualite"> </span></a>&nbsp;
+                                                    <span class="text-muted">Mensualite mois : {{ $nom_mois }}</span>
                                                     <span class="danger float-right"><i class="ft-arrow-up danger"></i> 5.14%</span>
                                                 </div>
                                             </div>
@@ -52,36 +55,24 @@
                                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                        <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                             <div class="pb-1">
                                                 <div class="clearfix mb-1">
                                                     <i class="icon-shuffle font-large-1 blue-grey float-left mt-1"></i>
-                                                    <span class="font-large-2 text-bold-300 success float-right">61%</span>
+                                                    <span class="font-large-2 text-bold-300 success float-right">{{ number_format($somme_depense, 0,'.',' ') }} </span>
                                                 </div>
                                                 <div class="clearfix">
+                                                    <a href="{{ route('liste-depense') }}"><span class="info ft-eye" title="Depenses"> </span></a>&nbsp;
                                                     <span class="text-muted">Depenses</span>
-                                                    <span class="success float-right"><i class="ft-arrow-down success"></i> 2.24%</span>
+                                                    <span class="success float-right"><i class="ft-arrow-down success"></i> </span>
                                                 </div>
                                             </div>
                                             <div class="progress mb-0" style="height: 7px;">
+
                                                 <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-12">
-                                            <div class="pb-1">
-                                                <div class="clearfix mb-1">
-                                                    <i class="icon-wallet font-large-1 blue-grey float-left mt-1"></i>
-                                                    <span class="font-large-2 text-bold-300 warning float-right">$6,87M</span>
-                                                </div>
-                                                <div class="clearfix">
-                                                    <span class="text-muted">Autres</span>
-                                                    <span class="warning float-right"><i class="ft-arrow-up warning"></i> 43.84%</span>
-                                                </div>
-                                            </div>
-                                            <div class="progress mb-0" style="height: 7px;">
-                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +90,7 @@
                                     </div>
 
                                     <div class="card-content">
-                                        <input type="text" value="75" class="knob hide-value responsive angle-offset" data-angleOffset="0" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputColor="#e1e1e1" data-readOnly="true" data-fgColor="#37BC9B" data-knob-icon="ft-trending-up">
+                                        <input type="text" value="75" class="knob hide-value responsive angle-offset" data-angleOffset="0" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputColor="#e1e1e1" data-readOnly="true" data-fgColor="blue" data-knob-icon="ft-trending-up">
                                         <ul class="list-inline clearfix mt-2 mb-0">
                                             <li class="border-right-grey border-right-lighten-2 pr-2">
                                                 <h2 class="grey darken-1 text-bold-400">{{ $garcon }}</h2>
@@ -129,9 +120,7 @@
                                                 <i class=" success font-large-2 float-right"> {{ count($item->classes) }}</i>
                                             </div>
                                         </div>
-                                        <div class="progress mt-1 mb-0" style="height: 7px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +151,7 @@
                                        
                                                 <div class="row">
                                                     <div class="col-sm-12"><table class="table table-hover table-bordered comma-decimal-place dataTable" id="DataTables_Table_10" role="grid" aria-describedby="DataTables_Table_10_info">
-                                                    <thead>
+                                                    <thead class="bg-blue white" >
                                                     <tr role="row">
                                                         <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 238px;">Matricule</th>
                                                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_10" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 359px;">Nom</th>
@@ -183,7 +172,6 @@
                                                                 <a class="btn btn-icon" href="{{ route('voir-eleve', ['id' =>$item->id]) }}"><i class="icon-note"></i> </a>
                                                                 <a class="btn btn-icon"><i class="icon-question"></i> </a>
                                                             </td>
-
                                                         </tr>
                                                     @endforeach
                                                     </tbody>

@@ -18,7 +18,7 @@
         @endif
       <div class="row">
           <div class="col-12">
-                <button class="btn btn-success" data-toggle="modal" data-target="#showFormMatiere">Ajouter</button> <br> <br>
+                <button class="btn btn-blue" data-toggle="modal" data-target="#showFormMatiere">Ajouter</button> <br> <br>
               <div class="card">
                     <div class="card-header">
                             <h4 class="card-title">Liste des Matieres Colleges</h4> 
@@ -35,7 +35,7 @@
                         <div class="card-content collapse show">
                                 <div class="table-responsive">
                                         <table class="table table-hover">
-                                            <thead class="bg-success white " align="center">
+                                            <thead class="bg-blue white" align="center">
                                                 <tr>
                                                     <th>code</th>
                                                     <th>libelle</th>
