@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html class="loading" lang="fr" data-textdirection="ltr" ng-app="appModule">
 
 <body ng-controller="BackEndCtl">

@@ -146,8 +146,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-              <form class="form-horizontal" method="post" action="{{ route('save-paiement')}}">
-                <input type="hidden" name="inscription" value="">
+              <form class="form-horizontal" method="post" action="{{ route('savePaiementDispatch')}}">
+              
                 <div class="form-group">
                         <label for="montant">
                             matricule
@@ -156,8 +156,12 @@
                     </div>
                   <div class="form-group">
                       <label for="mosi">Mois</label>
-                      <select  name="mois" class="form-control">
-                          
+                      <select  class="form-control"  name="mois_id">
+                          @foreach($mois as $item)
+                                <option value=" {{ $item->id}}">
+                                    {{ $item->mois}}
+                                </option>
+                      @endforeach
                       </select>
 
                   </div>

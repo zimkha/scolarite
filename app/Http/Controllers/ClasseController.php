@@ -14,6 +14,7 @@ class ClasseController extends Controller
     public function index()
     {
         $classes = Classe::all();
+       
         $niveau = NiveauClasse::all();
         return view('pages.classe', compact('classes', 'niveau'));
     }

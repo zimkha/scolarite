@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Classe;
 use App\Mensuel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Paiement;
+use App\Inscription;
+use App\Eleve;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 class PaiementController extends Controller
@@ -20,6 +23,7 @@ class PaiementController extends Controller
            
             $errors =  null;
             $item = new Paiement();
+            
             if(isset($request->id))
             {
                 $item = Paiement::find($request->id);
@@ -30,6 +34,7 @@ class PaiementController extends Controller
             }
             if($errors == null)
             {
+               
                 $montant     = $request->montant;
                 $mois        = $request->mois;
                 $inscription = $request->inscription;
@@ -37,15 +42,14 @@ class PaiementController extends Controller
                 $item->inscription_id = $inscription;
                 $item->mois_id        = $mois;
                 $item->montant        = $montant;
-
+                $item->user_id        = 1;
                 $item->save();
-                Session::flash('message', "Paiement bien enregistre");
-                return Redirect::back();
+                return redirect()->route('voir-eleve', ['id' => $inscription]);
             }
             else
             {
                 Session::flash('error', $errors);
-                return Redirect::back();
+                return redirect()->route('voir-eleve', ['id' => $inscription]);
             }
         });
       }
@@ -65,111 +69,158 @@ class PaiementController extends Controller
     }
     public function index()
     {
-        return view('pages.paiement');
+        $mois = Mensuel::all();
+        return view('pages.paiement', compact('mois'));
     }
 
     public function savePaiementDispatch(Request $request)
     {
         try{
             return DB::transaction(function() use($request){
-              $errors = null;
-              $eleve = null;
+              $errors = array();
+                 $tab = array();
 
-              $item = new Paiement();
-              if(isset($request->id))
-              {
-                  $item = Paiement::find($request->id);
-              }
-              if(isset($request->matricule))
-              {
-                  $eleve = Eleve::where('matricule', $request->matricule)->get();
-              }
-              if(empty($request->montant))
-              {
-                $errors ="Erreur: Veuillez préciser le montant";
-              }
-              if(empty($request->mois_id))
-              {
-                $errors ="Erreur: Veuillez préciser le mois";
-              }
-              $inscription = Inscription::where('eleve_id', $eleve->id)->where('annee_scolaire_id', 1)->first();
-              $paiements   = Paiement::where('inscription_id', $inscription->id);
-              $classe      = $inscription->classe;
-              $somme_mensule = $classe->mensualite;
-              $montant     = $request->montant;
-              if($paiements && $errors == null)
-              {
-                foreach($paiements as $paiement)
-              {
-                 if($paiement->montant < $somme_mensule)
-                 {
-                   $restant                  = $somme_mensule - $paiement->montant;
-                  if($restant < $montant)
-                  {
-                    $paiement->montant       = $paiement->montant + $restant;
-                    $montant                 = $montant - $restant; 
-                    $paiement->save();
-                  }
-                 }
-              }
-              $firstTime = true;
-              if($montant > 0)
-              {
-                   $item->mois_id = $request->mois_id;
+               $inscription = Inscription::find($request->inscription_id);
 
-                   if($montant > $classe->mensualite)
+               if ($inscription->id > 0)
+               {
+
+                   $paiment   = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
+                   $id_last   = $paiment->id;
+
+                   $classe    = $inscription->classe;
+                   $motant_mensuel = $classe->mensualite;
+
+                   $somme_entre_restant = $request->somme_entre;
+                   $eleve = $inscription->eleve;
+
+                   if ($paiment->montant == $classe->mensualite)
                    {
-                    $item->montant = $classe->mensualite;
-                    $montant       = $montant - $classe->mensualite;
+                       dd("okk");
+                       $new = new Paiement();
+                       if ($classe->mensualite <= $somme_entre_restant)
+                       {
+                           $new->montant = $classe->mensualite;
+                           $new->inscription_id = $inscription->id;
+                           $month_courant = $paiment->mois_id;
+                            $new_mont = $month_courant + 1;
+                            if ($new_mont <= 10)
+                            {
+                                $new->mois_id = $new_mont;
+                               // $new->save();
+                                array_push($tab, $new);
+                                $somme_entre_restant = $somme_entre_restant - $classe->mensualite;
+                            }
+                           if ($somme_entre_restant > 0)
+                           {
+
+                               $new = new Paiement();
+                               $pai = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
+
+                               $id = $paiment->mois_id;
+                               $id = $id + 1;
+                               if ($id <= 10)
+                               {
+                                   $new->mois_id = $id;
+                                   if ($somme_entre_restant > $classe->mensualite)
+                                   {
+                                       $new->montant =$classe->mensualite;
+                                       $somme_entre_restant = $somme_entre_restant - $classe->mensualite;
+                                   }
+                                   if ($somme_entre_restant < $classe->mensualite)
+                                   {
+                                       $new->montant = $somme_entre_restant;
+                                       $somme_entre_restant = 0;
+                                   }
+                                   $new->inscription_id = $inscription->id;
+                                  // $new->save();
+                                   array_push($tab, $new);
+                               }
+                           }
+                       }
                    }
-                   if($montant == $classe->mensualite)
+                   if ($paiment->montant < $classe->mensualite)
                    {
-                    $item->montant = $classe->mensualite;
-                    $montant       = 0;
+                       //dd('jes la');
+                       $new = new Paiement();
+                       $last_paiement = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
+                       $restant_apayer = $classe->mensualite - $last_paiement->montant;
+
+                       if ($somme_entre_restant > $restant_apayer)
+                       {
+                           $last_paiement->montant = $last_paiement->montant + $restant_apayer;
+                           $last_paiement->save();
+                           array_push($last_paiement, $new);
+                           $somme_entre_restant = $somme_entre_restant - $restant_apayer;
+                           if ($somme_entre_restant > 0)
+                           {
+                               dd('jes suiii');
+                               $new = new Paiement();
+                               $pai = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
+
+                               $id = $paiment->mois_id;
+                               $id = $id + 1;
+                               if ($id <= 10)
+                               {
+                                   $new->mois_id = $id;
+                                   if ($somme_entre_restant > $classe->mensualite)
+                                   {
+                                       $new->montant =$classe->mensualite;
+                                       $somme_entre_restant = $somme_entre_restant - $classe->mensualite;
+                                   }
+                                   if ($somme_entre_restant < $classe->mensualite)
+                                   {
+                                       $new->montant = $somme_entre_restant;
+                                       $somme_entre_restant = 0;
+                                   }
+                                   $new->inscription_id = $inscription->id;
+                                   // $new->save();
+                                   array_push($tab, $new);
+                               }
+                           }
+
+                       }
+                       if ($somme_entre_restant < $restant_apayer)
+                       {
+                           $last_paiement->montant = $last_paiement->montant + $somme_entre_restant;
+                          // $last_paiement->save();
+                           array_push($tab, $last_paiement);
+                       }
+                       if ($somme_entre_restant == $restant_apayer)
+                       {
+
+                           $last_paiement->montant = $last_paiement->montant + $somme_entre_restant;
+                           $somme_entre_restant = 0;
+                        $last_paiement->save();
+                           array_push($tab, $last_paiement);
+                       }
+
                    }
-                
-                  $item->inscription_id = $inscription->id;
-                  $item->save();
-                  $firstTime = false; 
-              }
-              if ($montant > 0 && $firstTime == false)
-              {
-                  $paiye           = Paiement::where('insciption_id', $inscription->id)->last();
-                  $mois_prec       = $paiye->mois;
+                   //dd($tab, $somme_entre_restant);
 
-                  $id_mois_suivant = $mois_prec->id + 1;
+               }
+               else
+               {
+                   array_push($errors, 'Erreur: Veuillez contacter le service technique');
+               }
+                  $tab_ = array();
+                if ($errors == null)
+                {
+                    $i = 0;
+                    foreach ($tab as $item)
+                    {
+                        $item->inscription_id = $inscription->id;
+                        $item->user_id = 1;
+                        $item->save();
 
-                  $mois_suivant    = Mensuel::find($id_mois_suivant);
-
-                  if ($mois_suivant)
-                  {
-                      $apayer = 0;
-                      if ($montant > $somme_mensule)
-                      {
-                          $apayer = $somme_mensule;
-                          $montant = $montant - $somme_mensule;
-                      }
-                      else
-                      {
-                          $apayer = $montant;
-                      }
-                      $newPaiement = new Paiement();
-                      $newPaiement->inscription_di = $inscription->id;
-                      $newPaiement->mois_id = $id_mois_suivant;
-                      $newPaiement->montant = $apayer;
-                      $newPaiement->save();
-                  }
-              }
-              }
-              // Si c'est le premier paiement de l'eleve
-              elseif($errors == null)
-              {
-
-              }
+                       array_push($tab_ , $item);
+                    }
+                }
+                return $tab_;
             });
         }catch(\Exception $ex)
         {
-
+              return response()->json($ex->getMessage());
         }
     }
 }

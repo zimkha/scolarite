@@ -62,11 +62,15 @@
                         </div>
                     </div>
 
+
     <section id="simple-user-cards" class="row">
           
         <div class="col-12">
             <h4 class="text-uppercase">{{ $eleve->prenom }} {{ $eleve->nom }}</h4>
-            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>  
+            <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-info" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>
+            <a class="btn btn-icon" href="#" title="certificat d'inscription"><i class="icon-graduation"></i></a>
+            <a class="btn btn-icon" href="#" title="recapitulatif eleve"  data-toggle="modal" data-target="#showRecap"><i class="icon-magic-wand"></i> </a>
+
             <br>
             <br>
         </div>
@@ -127,7 +131,7 @@
 
     </section>
             <div class="row">
-                <div class="col-6">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Liste des Paiements de l'eleve</h4>
@@ -151,7 +155,8 @@
                             <div class="card-body card-dashboard">
                                <button class="btn btn-info" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
                                <button class="btn btn-info" data-toggle="modal" data-target="#showPaiemenGroup">Paiement Groupe</button>
-        
+
+
                             </div>
                             <div class="table-responsive">
                                 <table class="table mb-0">
@@ -182,50 +187,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Liste des Paiements de l'eleve</h4>
-                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li><a data-action="collapse"><i class="ft-plus"></i></a></li>
-                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-content collapse show" style="">
-                            <div class="card-body card-dashboard">
-                                <button class="btn btn-info" data-toggle="modal" data-target="#showFormPAiment">Paiement</button>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th>Mois</th>
-                                        <th>Montant</th>
-                                        <th>Etat</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Janvier</td>
-                                        <td>250000</td>
-                                        <td>Etat</td>
-                                        <td>
-                                            <a href="" class="btn btn-success" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
-                                        </td>
-
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
        
@@ -234,7 +196,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel77">Formualire paiement</h4>
+                    <h4 class="modal-title" id="myModalLabel77">Formualaire paiement</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -272,35 +234,26 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel77">Formualire paiement Groupe</h4>
+                    <h4 class="modal-title" id="myModalLabel77">Formualaire paiement</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-              <form class="form-horizontal" name="paiementGroupe" method="post" action="{{ route('savePaiementDispatch')}}">
-                <input type="hidden" name="inscription" value="">
-                  <input  type="hidden" name="inscription" value="{{ $inscription->id }}">
-                  <div class="form-group">
-                      <label for="mosi">Mois</label>
-                      <select  name="mois" class="form-control">
-                          @foreach($mois as $item)
-                              <option value="{{$item->id}}">{{ $item->mois }}</option>
-                              @endforeach
-                      </select>
-
-                  </div>
-                  <div class="form-group">
-                      <label for="montant">
-                          Montant
-                      </label>
-                    <input type="number" class="form-control" name="montant" required="required" value="{{ $classe->mensualite }}">
-                  </div>
-                  <div class="modal-footer">
-                      <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>
-                      <button type="submit" class="btn btn-outline-success">Enregistre</button>
-                  </div>
-              </form>
+                    <form class="form-horizontal" method="post" action="{{ route('save-paiement')}}">
+                        <input type="hidden" name="inscription" value="">
+                        <input  type="hidden" name="inscription" value="{{ $inscription->id }}">
+                        <div class="form-group">
+                            <label for="montant">
+                                Montant
+                            </label>
+                            <input type="number" class="form-control" name="somme_entre" required="required">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-outline-success">Enregistre</button>
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -357,7 +310,7 @@
 
                                 <div class="modal-footer">
                                     <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit"  name="updateEleve" class="btn btn-success">Save changes</button>
+                                    <button type="submit"  name="updateEleve" class="btn btn-success">Enregistre</button>
                                 </div>
                             </form>
                         </div>
@@ -365,6 +318,62 @@
                     </div>
                 </div>
             </div>
+        <div class="modal fade text-left" id="showRecap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel17">Recapitulatif Eleve</h4> <a class="btn btn-icon" href="#" title="imprimer"><i class="icon-printer"></i></a>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title"> Paiements</h4>
+                                        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+
+                                    </div>
+                                    <div class="card-content collapse show" style="">
+
+                                        <div class="table-responsive">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th>Mois</th>
+                                                    <th>Montant</th>
+                                                    <th>Etat</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($paiements as $item)
+                                                    <tr>
+                                                        <td>{{ $item->mois->mois}}</td>
+                                                        <td>{{ $item->montant}} Fcfa</td>
+                                                        <td>{{ $item->mois->mois}}</td>
+
+                                                        <td>
+                                                            <a  href="" class="btn btn-success " data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">voir</a>
+                                                        </td>
+
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
     </div>
     </div>

@@ -26,4 +26,15 @@ class Inscription extends Model
     {
         return $this->belongsTo(AnneeScolaire::class);
     }
+
+    public static function getSommeInscriptions()
+    {
+        $somme = 0;
+        $isncriptions = Inscription::all();
+        foreach($isncriptions as $item)
+        {
+            $somme = $somme + $item->somme_inscription;
+        }
+        return $somme;
+    }
 }

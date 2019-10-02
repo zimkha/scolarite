@@ -9,7 +9,8 @@ class Paiement extends Model
   protected $fillable = [
       'inscription_id',
       'mois_id',
-      'montant'
+      'montant',
+      'user_id'
   ];
 
   public function inscription()
@@ -19,5 +20,9 @@ class Paiement extends Model
   public function  mois()
   {
       return $this->belongsTo(Mensuel::class);
+  }
+  public function  user()
+  {
+      return $this->belongsTo(User::class);
   }
 }
