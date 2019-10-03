@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Depense;
 use App\Inscription;
 use App\Paiement;
-use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class StatistiqueController extends Controller
@@ -62,5 +62,18 @@ class StatistiqueController extends Controller
         {
             return response()->json($e->getMessage());
         }
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getOperationByDaye()
+    {
+        $date                   =  date('Y-m-d 00:00:');
+        $date_fin               =  date('y-m-d 23:59:59');
+        $paiement               =  Paiement::where('user_id', 1)->whereBetween('created_at', [$date, $date_fin])->get();
+        $inscriptions           =  Inscription::where('user_id',1)->whereBetween('created_at', [$date, $date_fin])->get();
+
+        return view('pdf.operation', compact('paiement', 'inscriptions'));
     }
 }

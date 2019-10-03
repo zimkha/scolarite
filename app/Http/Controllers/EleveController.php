@@ -111,8 +111,10 @@ class EleveController extends Controller
                      {
                          $etat = "Non à Jour";
                      }
-                     //dd($s, (int)$somme[0]->montant);
-
+                     if ((int)$somme[0]->montant = 0)
+                     {
+                         $etat =" ";
+                     }
                     $eleve = Eleve::find($inscription->eleve_id);
                     $paiements = Paiement::where('inscription_id', $inscription->id)->get();
                     if($eleve->naissance)

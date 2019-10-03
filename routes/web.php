@@ -26,6 +26,7 @@ Route::get('/inscription', 'InscriptionController@index');
 Route::get('/depenses', 'DepenseController@index')->name('liste-depense');
 Route::post('/depense', 'DepenseController@save')->name('save-depense');
 Route::get('/depense/show/{id}', 'DepenseController@show')->name('show-depense');
+Route::post('/depense/show-depense' , 'DepenseController@getDepensesTwoDate')->name('depense-date');
 Route::delete('/depense/delete/{id}', 'DepenseController@delete')->name('delete-depense');
 
 
@@ -37,7 +38,7 @@ Route::get('/niveau/{id}', 'NiveauClasseController@show')->name('show-niveau');
 Route::post('/eleve-store', 'EleveController@saveUpdate')->name('save-update-eleve');
 
 Route::post('/inscription', 'InscriptionController@save')->name('inscrire');
-Route::get('/isncriptions', 'InscriptionController@getAll');
+Route::get('/inscriptions', 'InscriptionController@getAll');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -59,3 +60,6 @@ Route::delete('/professeur/delete/{id}', 'ProfesseurController@delete');
 Route::post('/professeur-witheclasse', 'ProfesseurController@saveProfWithClasse')->name('save-Prof-With-Classe');
 Route::post('/professeur-withe-matiere-enseigne', 'ProfesseurController@saveProfWithMatiere')->name('matier-par-prfesseur');
 
+Route::get('/getoperation', 'HomeController@operations')->name('get-operations');
+
+Route::get('/facture-classe/{id}', 'ClasseController@getAllFactureByClasse')->name('facture-classe');

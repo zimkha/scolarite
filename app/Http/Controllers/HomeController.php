@@ -54,6 +54,10 @@ class HomeController extends Controller
         }
         $filles = 0;
         $garcon = 0;
+        $mois_ = date('F');
+        $mois_depense = DB::select("SELECT SUM(montant) FROM paiements p, mensuels m where m.mois = '$mois_' and m.id = p.mois_id");
+
+
         foreach ($inscriptions as $inscription)
         {
             if($inscription->eleve->genre == true) $garcon = $garcon + 1;
@@ -70,12 +74,21 @@ class HomeController extends Controller
             'nom_mois'));
     }
 
-    public  function getAllPaiementEnCour()
+    public  function operations()
     {
+
         try{
-           
+
+            $date                   =  date('Y-m-d 00:00:');
+            $date_fin               =  date('y-m-d 23:59:59');
+            $paiement               =  Paiement::where('user_id', 1)->whereBetween('created_at', [$date, $date_fin])->get();
+            $inscriptions           =  Inscription::where('user_id',1)->whereBetween('created_at', [$date, $date_fin])->get();
+
+            return view('pdfs.operation', compact('paiement', 'inscriptions'));
+
         }catch(\Exception $ex)
         {
+            return response()->json($ex->getMessage());
         }
     }
 

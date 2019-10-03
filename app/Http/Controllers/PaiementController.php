@@ -176,7 +176,7 @@ class PaiementController extends Controller
                                  array_push($tab, $paiment);
 
                              }
-                             if ($paiment->montant == $motant_mensuel)
+                             if ($paiment->montant == $motant_mensuel && $somme_entre_restant > 0)
                              {
                                  $new_paiement                        = new Paiement();
                                  $id_last_month                       = $paiment->mois_id;
@@ -207,13 +207,13 @@ class PaiementController extends Controller
                if ($errors)
                {
                    return response()->json($errors);
-                   //Session::flash('error', $errors);
-                   //return Redirect::back();
+                   Session::flash('error', $errors);
+                   return Redirect::back();
                }
                else
                {
-                   //Session::flash('message', "Paiement bien enregistre");
-                 //  return Redirect::back();
+                   Session::flash('message', "Paiement bien enregistre");
+                   return Redirect::back();
                   return response()->json(['tab' => $tab, 'somme' => $somme_entre_restant]);
                }
 

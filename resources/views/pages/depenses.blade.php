@@ -20,6 +20,38 @@
                     <button class="btn btn-blue" data-toggle="modal" data-target="#showFormMatiere">Ajouter</button> <br> <br>
                     <div class="card">
                         <div class="card-header">
+                            <h4 class="card-title">Depenses Durant deux date</h4>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                        </div>
+                        <div class="card-body">
+                        <form class="form-horizontal" action="{{ route('depense-date') }}" method="post">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                    <label for="date_debut" >Date de debut</label>
+                                        <input type="date" name="date_debut" class="form-control">
+                                    </div>
+
+                                </div>
+                                <div class="col-6 ">
+                                    <div class="form-group">
+                                        <label for="date_fin" >Date de fin</label>
+                                        <input type="date" name="date_fin" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <button type="submit" name="dep-show" value="dep-show" class="btn btn-block btn-blue">valider</button> &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
                             <h4 class="card-title">Liste des Depenses</h4>
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
