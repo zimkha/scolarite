@@ -55,10 +55,5 @@
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{ asset('assets/js/angular/select2.min.js')}}"></script>
 
-<script>
-    $("select.select2").select2({
-        tags: true
-    });
-</script>
 
 

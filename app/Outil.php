@@ -1,11 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: khazimndiaye
- * Date: 8/24/19
- * Time: 5:12 PM
- */
-use \Illuminate\Database\Eloquent\Model;
+namespace App;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class  Outil extends Model  {
     public  static  function matricule($nom, $prenom)

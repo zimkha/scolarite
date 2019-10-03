@@ -89,14 +89,32 @@ class EleveController extends Controller
             $php_errormsg = null;
             $date = date('Y');
             $age = 0;
+           $etat = "";
             if($id)
             {
                  $inscription = Inscription::find($id);
-                 
+
                  $eleve = new Eleve();
+
                 
                  if($inscription)
                  {
+                     $mensualite = Paiement::where('inscription_id', $id)->get();
+                     $somme = DB::select("SELECT SUM(montant) as montant from paiements p where p.inscription_id = '$id'");
+                     $nb =  count($mensualite);
+                     $s = $nb * $inscription->classe->mensualite;
+                     if ($s == (int)$somme[0]->montant ||   (int)$somme[0]->montant > $s )
+                     {
+                         $etat = "A Jour";
+                     }
+                     elseif((int)$somme[0]->montant  < $s)
+                     {
+                         $etat = "Non à Jour";
+                     }
+                     if ((int)$somme[0]->montant = 0)
+                     {
+                         $etat =" ";
+                     }
                     $eleve = Eleve::find($inscription->eleve_id);
                     $paiements = Paiement::where('inscription_id', $inscription->id)->get();
                     if($eleve->naissance)
@@ -127,7 +145,7 @@ class EleveController extends Controller
                  }
                
             }
-            return view('pages/profile-eleve', compact('eleve', 'inscription', 'classe', 'mois', 'image', 'path', 'chemin', 'paiements', 'age'));
+            return view('pages/profile-eleve', compact('eleve', 'etat', 'inscription', 'classe', 'mois', 'image', 'path', 'chemin', 'paiements', 'age'));
 
     }
 }

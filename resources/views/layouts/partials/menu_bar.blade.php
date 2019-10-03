@@ -8,6 +8,7 @@
             <li class=" nav-item"><a href="#"><i class="icon-graduation"></i>Evaluation</a></li>
             <li class=" nav-item"><a href="{{ route('list-matiere')}}"><i class="icon-notebook"></i>Matiere</a></li>
             <li class=" nav-item"><a href="{{ route('paiement-index')}}"><i class="icon-paypal"></i>Mensualite</a></li>
+            <li class=" nav-item"><a href="{{ route('get-operations')}}"><i class="icon-paypal"></i>Opérations - Jour</a></li>
 
             <li class=" nav-item"><a href="#"><i class="icon-settings"></i>Parametre</a>
                 <ul>
@@ -18,7 +19,8 @@
             <li class="navigation-header"><span data-i18n="nav.category.forms">Gestions Administration</span><i class="ft-more-horizontal ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="Forms"></i>
             </li>
             <li class=" nav-item"><a href="{{ route('liste-prof') }}"><i class="icon-notebook"></i>Professeur</a></li>
-            <li class=" nav-item"><a href="#"><i class="icon-paypal"></i>Depenses</a></li>
+            <li class=" nav-item"><a href="{{ route('liste-depense') }}"><i class="icon-paypal"></i>Depenses</a></li>
+            <li class=" nav-item"><a href="{{ route('liste-depense') }}"><i class="icon-paypal"></i>Stats Depenses</a></li>
         </ul>
         
     </div>
