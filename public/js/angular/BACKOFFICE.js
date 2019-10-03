@@ -227,14 +227,7 @@ var factories = {};
 // Spécification fonctionnelle du controller
 app.controller('BackEndCtl', function (Init, $location, $scope, $filter, $log, $q, $route, $routeParams, $timeout, $compile) {
 
-
-
-
-    window.Echo.channel('laravel_database_notification')
-        .listen('NotificationEvent', (e) => {
-            console.log('event page', e);
-        });
-
+    alert("bonjour")
     // Data containers
     $scope.entreprises = [];
     $scope.secteuractivites = [];
