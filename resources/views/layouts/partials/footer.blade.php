@@ -1,3 +1,18 @@
+<script src="{{asset("js/angular/angular.min.js")}}"></script>
+<script src="{{asset("js/angular/angular-route.min.js")}}"></script>
+<script src="{{asset("js/angular/angular-sanitize.min.js")}}"></script>
+<script src="{{asset("js/angular/angular-loadscript.js")}}"></script>
+<script src="{{asset("js/angular/moment.min.js")}}"></script>
+<script src="{{asset("js/angular/angular-moment.min.js")}}"></script>
+<script src="{{asset("js/angular/angular-filter.min.js")}}"></script>
+
+<script src="{{asset("js/angular/ui-bootstrap-tpls-2.5.0.min.js")}}" type="text/javascript"></script>
+
+<script src="{{asset("js/angular/BACKOFFICE.js")}}"></script>
+{{--angular--}}
+
+
+
 <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
 

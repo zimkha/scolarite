@@ -1,4 +1,4 @@
-<html class="loading" lang="fr" data-textdirection="ltr" ng-app="appModule">
+<html class="loading" lang="fr" data-textdirection="ltr" ng-app="BackEnd">
 
 <body ng-controller="BackEndCtl">
 @include('layouts.partials.header')
