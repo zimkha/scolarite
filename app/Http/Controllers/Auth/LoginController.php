@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -36,4 +39,21 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    function authenticated(Request $request, $user)
+    {
+        if ($user->active == false)
+        {
+            Auth::logout();
+            return Redirect::back()->withErrors(['msg'=>['Votre compte est désactivé, veuillez contacter l\'administration de la pharmacie pour plus d\'information']]);
+        }
+        else
+        {
+            $user->last_login = Carbon::now();
+            $user->last_login_ip = $request->getClientIp();
+            $user->save();
+
+            redirect('/login');
+        }
+    }
+
 }

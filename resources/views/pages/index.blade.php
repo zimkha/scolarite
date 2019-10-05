@@ -32,17 +32,7 @@
                                                 <i class="ft-lock"></i>
                                             </div>
                                         </div>
-                                        <div class="form-group position-relative has-icon-left">
-                                               <select name="annee_scolaire_id" class="form-control">
-                                                   @foreach($anne_sco as $item)
-                                                   
-                                                   <option value="{{ $item->id }}">
-                                                        {{ date("Y", strtotime($item->date_debut) )}} -     {{ date("Y", strtotime($item->date_fin) )}}
-                                                    </option>
-                                                    @endforeach
-                                               </select>
-                                       
-                                            </div>
+
                                         <div class="form-group row">
                                             <div class="col-md-6 col-12 text-center text-md-left">
                                                 <fieldset>

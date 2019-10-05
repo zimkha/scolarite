@@ -284,6 +284,7 @@
         }
         .panel-body {
             padding: 15px;
+
         }
         .panel {
             margin-bottom: 20px;
@@ -291,6 +292,7 @@
             border-radius: 4px;
             -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
             box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            height: 480px;
         }
         .panel50Pourcent {
             width: 48%;
@@ -332,18 +334,55 @@
         .header-milieu{
             margin-left: 50px;
         }
-
+         .my-position
+         {
+          margin-left: 30px;
+             line-height: 200px;
+             vertical-align: middle;
+         }
     </style>
 </head>
-<body onload="window.print()" >
-
-
+<body onload="window.print()">
   @foreach($tab as $item)
      <div class="panel panel50Pourcent">
-         <div class="panel-body">
-             @foreach($item as $val)
-                 {{ $val['recouvrement'] }}
+         <div class="panel-body ">
+             <img src="{{ asset('image/Sans.png') }}">
+             <br>
+                 @foreach($item as $val)
+                 <div style=" text-align: center">
+                     <td>
+                         LOQMAN SCHOOL<br>
+                         Parcelle Assainies Unite 5 N° 118
+                         <br>
+                       AUT 10079MEN/DEP
+                         <br>Telephone : 77 550 49 95
+                     </td>
+                 </div>
+              <br>
+                 &nbsp; &nbsp; &nbsp; Nom:<strong>{{$val['inscription']->eleve->prenom}}</strong> <br>
+                 &nbsp; &nbsp; &nbsp; Prenom:  <strong>{{$val['inscription']->eleve->nom}}</strong><br>
+                 &nbsp; &nbsp; &nbsp; Classe: <strong>{{$val['inscription']->classe->nom_classe}}</strong>
+                 <br>
+
+                 &nbsp; &nbsp; &nbsp; Montant a payer et Recouvrement
+             <br>
+             <br>
+                 &nbsp; &nbsp; &nbsp;  &nbsp;recouvrement: @if($val['recouvrement'] > 0)    &nbsp; &nbsp; &nbsp;<strong>{{ number_format($val['recouvrement'], 0,'.',' ') }} Fcfa </strong> @else    &nbsp; &nbsp; &nbsp;0 Fcfa @endif
+                 <br>
+
+                 &nbsp; &nbsp; &nbsp; Mois : {{ $val['mensuel'] }} {{ $val['mois'] }}
+                 <br>
+
+                  <?php
+                  $somme =(int) $val['recouvrement'] + (int)$val['inscription']->classe->mensualite;
+                  ?>
+                 &nbsp; &nbsp; &nbsp; Net à payer : {{ number_format($somme, 0, '.',' ')}}
+                 <p style=" font-style: italic;">Les parents doivent s'acquiter des frais de scolarités au plus tard le 05 du mois; Passé cette date les élèves ne seront reçu a l'écoel qu'après réglement</p>
+                 <p style="float: right">
+                     Merci de votre confiance
+                 </p>
              @endforeach
+
          </div>
      </div>
   @endforeach

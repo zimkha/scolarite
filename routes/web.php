@@ -12,9 +12,7 @@
 */
 
 Route::get('/', function () {
-    $anne_sco = App\AnneeScolaire::all();
-    
-    return view('pages/index', compact('anne_sco'));
+
 })->middleware('auth');
 
 Route::get('/dashboard', 'HomeController@index');
@@ -30,7 +28,7 @@ Route::post('/depense/show-depense' , 'DepenseController@getDepensesTwoDate')->n
 Route::delete('/depense/delete/{id}', 'DepenseController@delete')->name('delete-depense');
 
 
-Route::post('/classe', 'ClasseController@save');
+Route::post('/classe', 'ClasseController@save')->name('save-classe');
 Route::get('/classe-index', 'ClasseController@index')->name('home-classe');
 Route::get('/classes', 'ClasseController@getAll');
 Route::get('/classe/{id}', 'ClasseController@show')->name('show-classe');
@@ -63,3 +61,7 @@ Route::post('/professeur-withe-matiere-enseigne', 'ProfesseurController@saveProf
 Route::get('/getoperation', 'HomeController@operations')->name('get-operations');
 
 Route::get('/facture-classe/{id}', 'ClasseController@getAllFactureByClasse')->name('facture-classe');
+Route::get('/certificat/{id}', 'InscriptionController@getCertificat')->name('certificat-inscription');
+
+Route::get('/statmensuel/{id}', 'OperationController@getstatsmensuel');
+Route::get('/statistique-graphique', 'OperationController@statistiques')->name('graph');

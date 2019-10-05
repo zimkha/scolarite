@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $.ajax({
-        url: 'http://localhost/pharmacie/public/teste',
+        url: 'http://localhost/scolarite/public/',
         method: "GET",
         success: function (data) {
             console.log(data)
@@ -16,7 +16,7 @@ $(document).ready(function(){
                 labels: product,
                 datasets : [
                     {
-                        label : 'Statistiques sur les produits les plus vendu ',
+                        label : 'Statistiques sur les Mensualites',
                         backgroundColor: ['#f7464a', '#46bfbd', '#fdb45c', '#985f0d'],
                         borderColor:'rgba(200,200,200,0.75)',
                         hoverBackgroundColor: 'rgba(200,200,200,1)',

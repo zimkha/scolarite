@@ -24,6 +24,7 @@
                                     </button>
                                 </h5>
                                 <div id="priseencharge" class="collapse show" style="">
+
                                     <div class="form-row mt-12">
                                             <div class="col-md-12">
                                                     <div class="position-relative form-group">
@@ -47,7 +48,9 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Liste des classes </h4>
+
+                                        <a class="btn btn-info" href="#" title="recapitulatif eleve"  data-toggle="modal" data-target="#showForme"><i class="icon-magic-wand"></i> </a>
+
                                         <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                         <div class="heading-elements">
                                             <ul class="list-inline mb-0">
@@ -107,6 +110,51 @@
                             </div>
                         </div>
                     </section>
+                <div class="modal fade text-left" id="showForme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel17">Nouvelle Classe</h4> <a class="btn btn-icon" href="#" title="imprimer"><i class="icon-printer"></i></a>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title"> Classe</h4>
+                                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+
+                                            </div>
+                                            <div class="card-content collapse show" style="">
+                                        <form class="form-horizontal" method="post"  action="{{ route('save-classe') }}">
+                                                   <div class="form-group">
+                                                       <label>Nom classe</label>
+                                                       <input type="text" required name="nom_classe" class="form-control">
+                                                   </div>
+
+                                                <div class="form-group">
+                                                    <label>Niveau classe</label>
+                                                    <select class="form-control" name="niveau_classe_id">
+                                                        @foreach($niveau as $item)
+                                                            <option value="{{ $item->id }}">
+                                                                {{ $item->nom_niveau }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
                 </div>
             </div>

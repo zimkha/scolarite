@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Operations</title>
+    <title>Certificat de Scolarité</title>
     <style>
         .swal2-container {
             display: flex;
@@ -284,6 +284,7 @@
         }
         .panel-body {
             padding: 15px;
+
         }
         .panel {
             margin-bottom: 20px;
@@ -291,15 +292,11 @@
             border-radius: 4px;
             -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
             box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            height: 480px;
         }
         .panel50Pourcent {
-            width: 38%;
+            width: 48%;
             display: inline-block;
-        }
-        .panel30Pourcent {
-            width: 35%;
-            display: inline-block;
-            border: 1px solid #40C1C9;
         }
         .panel100Pourcent {
             width: 97%;
@@ -337,75 +334,47 @@
         .header-milieu{
             margin-left: 50px;
         }
-
+        .my-position
+        {
+            margin-left: 30px;
+            line-height: 200px;
+            vertical-align: middle;
+        }
+        .mydiv
+        {
+            height: auto;
+            width: auto;
+            text-align: center;
+        }
     </style>
 </head>
 <body onload="window.print()">
-<div class="my-image header">
-   <!-- <img src="" width="100%" height="100%">-->
-</div>
-<div class="header">
-    <h5>Adresse: Adresse de la pharmacie</h5>
-    <h5>Tel: 00 000 00 00 / emaile pharmacie@gmail.com</h5>
-    Dakar le {{ date('d-m-y') }}
-
-    <br>
-
-    <div class="panel100Pourcent panel-primary">
-        <div class="panel-heading" align="center">
-            Operations des  Paiements {{ date('Y-m-d') }}
-        </div>
-
-    </div>
-    <br>
-    <br>
-
-    <div class="row">
-        <div class="panel100Pourcent">
-            <table class="table table-striped" align="center" width="100%">
-                <thead align="center">
-                <th>date</th>
-                <th>operateur</th>
-                <th>montant</th>
-                </th>
-                </thead>
-                <tbody>
-               @foreach($paiement as $item)
-                   <tr align="center">
-              <td>{{ $item->created_at }}</td>
-              <td>{{  $item->user->name}}</td>
-              <td>{{ $item->montant }}</td>
-                   </tr>
-                   @endforeach
-                </tbody>
-            </table>
-           <div class="panel50Pourcent" style="float: right">
-               <table class="table ">
-                   <tr>
-                       <td>Total</td>
-                       <td>{{ number_format($somme_paiement,0,'.',' ') }}</td>
-                   </tr>
-               </table>
-           </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="panel-heading" align="center">
-                Operations  Inscriptions{{ date('Y-m-d') }}
-            </div>
-            <table  class="table table-striped" align="center" width="100%">
-
-                <thead align="center">
-                <th>date</th>
-                <th>operateur</th>
-                <th>montant</th>
-                </th>
-                </thead>
-            </table>
-        </div>
-    </div>
-</div>
-
+<img src="{{ asset('image/Sans.png') }}">
+   <div class="mydiv">
+       <p  style=" text-align: center;  "><h3>REPUBLIQUE DU SENEGAL</h3></p>
+       <p  style=" text-align: center"><h3>MINISTERE DE L'EDUCATION NATIONAL</h3></p>
+      <p>***********************************************************</p>
+       LOQMAN SCHOOL
+       <br>
+       <br>
+       IFE DE GUEDIAWAYE
+       <br>
+       <br>
+       AUT 10079 MEN/DEP
+       <br>
+       <br>
+       CERTIFICAT DE SCOLARITE
+   </div>
+<br>
+<p> Je soussigne M CHEIKHNA DIAGNE Directeur de L'établissement scolaire LOQMAN SCHOOL</p>
+ Certife
+Que l'eleve <strong>{{ $inscription->eleve->prenom }} </strong> <strong>{{ $inscription->eleve->nom }}</strong><p> Né(e) le <strong>{{ $inscription->eleve->naissance }} à Dakar </strong>  à fréquenter réguilierement la classe de <strong>{{ $inscription->classe->nom_classe }}</strong></p><p>dans mon établissement pour l'année scolaire  <strong>{{ $debut }} - {{$fin }}</strong></p>
+  <p style="float: right;">Fais à Dakar le {{ date('d/m/Y') }}</p>
+   <br> <br> <br> <br>
+Motif...............
+<br>
+<br>
+<br>
+<br> <p style="float: right;">Le directeur</p>
 </body>
 </html>

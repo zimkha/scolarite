@@ -169,12 +169,16 @@ class ClasseController extends Controller
         $inscris = Inscription::find($id);
         $tab = array();
         $dette = 0;
+        $month = 0;
+
         if ($inscris)
         {
             $precedent_mont = Paiement::where('inscription_id', '=', $id)->get()->last();
 
             if ($precedent_mont)
             {
+
+
                 $classe = $inscris->classe;
                 if ($precedent_mont->montant == $classe->mensualite)
                 {
@@ -190,6 +194,8 @@ class ClasseController extends Controller
                    'mois' => $classe->mensualite,
                    'total' =>  $dette + $classe->mensualite,
                     'inscription' => $inscris,
+                    'mensuel'     => date('F'),
+
                 ]);
             }
         }

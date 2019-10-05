@@ -21,6 +21,7 @@
             <li class=" nav-item"><a href="{{ route('liste-prof') }}"><i class="icon-notebook"></i>Professeur</a></li>
             <li class=" nav-item"><a href="{{ route('liste-depense') }}"><i class="icon-paypal"></i>Depenses</a></li>
             <li class=" nav-item"><a href="{{ route('liste-depense') }}"><i class="icon-paypal"></i>Stats Depenses</a></li>
+            <li class=" nav-item"><a href="{{ route('graph') }}"><i class="icon-chart"></i>Stats Graphiques</a></li>
         </ul>
         
     </div>

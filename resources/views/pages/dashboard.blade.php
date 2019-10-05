@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row align-self-center">
                     <div class="col-xl-6 col-lg-6 col-md-12">
                         <div class="card">
                             <div class="card-content">
@@ -107,24 +107,18 @@
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-12 col-md-12">
-                       @foreach($niveaus as $item)
+
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <div class="media">
-                                            <div class="media-body text-left">
-                                                <h3 class="success">{{ $item->nom_niveau }}</h3>
-                                                <span>classes: </span>
-                                            </div>
-                                            <div class="media-right media-middle">
-                                                <i class=" success font-large-2 float-right"> {{ count($item->classes) }}</i>
-                                            </div>
+                                        <div  class="chart-container" style="position: relative; height:40vh; width:40vw">
+                                            <canvas id="graphChar"></canvas>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+
 
                     </div>
                 </div>

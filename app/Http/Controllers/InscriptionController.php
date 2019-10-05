@@ -140,9 +140,29 @@ class InscriptionController extends Controller
     /**
      *
      */
-    public function getOnInscription()
+    public function getCertificat($id)
     {
+      try{
+          return DB::transaction(function () use($id){
+             $inscription = Inscription::find($id);
 
+             $debut = substr($inscription->annee_scolaire->date_debut, 0,4);
+              $fin = substr($inscription->annee_scolaire->date_fin, 0,4);
+
+             if ($inscription)
+             {
+                 return view('pdfs.certificat', compact('inscription', 'debut', 'fin'));
+             }
+             else
+             {
+                 return \redirect()->back()->withErrors("Erreur");
+             }
+          });
+      }
+      catch (\Exception $e)
+      {
+          return response()->json($e->getMessage());
+      }
     }
 
     /**

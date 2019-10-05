@@ -78,13 +78,22 @@ class HomeController extends Controller
     {
 
         try{
-
+            $somme_paiement = 0;
+            $somme_incription = 0;
             $date                   =  date('Y-m-d 00:00:');
             $date_fin               =  date('y-m-d 23:59:59');
             $paiement               =  Paiement::where('user_id', 1)->whereBetween('created_at', [$date, $date_fin])->get();
             $inscriptions           =  Inscription::where('user_id',1)->whereBetween('created_at', [$date, $date_fin])->get();
 
-            return view('pdfs.operation', compact('paiement', 'inscriptions'));
+            foreach ($paiement as $item)
+            {
+                $somme_paiement = $somme_paiement + $item->montant;
+            }
+            foreach ($inscriptions as $item)
+            {
+                $somme_incription = $somme_incription + $item->somme_inscription;
+            }
+            return view('pdfs.operation', compact('paiement', 'inscriptions', 'somme_incription', 'somme_paiement'));
 
         }catch(\Exception $ex)
         {

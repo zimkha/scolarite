@@ -70,7 +70,7 @@
         <div class="col-12">
             <h4 class="text-uppercase">{{ $eleve->prenom }} {{ $eleve->nom }}</h4>
             <p>{{ $classe->nom_classe }}</p>     <button class="btn btn-blue" data-toggle="modal" data-target="#showUpdateForm">Modfier Eleve</button>
-            <a class="btn btn-icon" href="#" title="certificat d'inscription"><i class="icon-graduation"></i></a>
+            <a class="btn btn-icon" href="{{ route('certificat-inscription', ['id'  => $inscription->id]) }}" title="certificat d'inscription"><i class="icon-graduation"></i></a>
             <a class="btn btn-icon" href="#" title="recapitulatif eleve"  data-toggle="modal" data-target="#showRecap"><i class="icon-magic-wand"></i> </a>
 
             <br>
