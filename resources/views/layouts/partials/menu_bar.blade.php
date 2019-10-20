@@ -9,6 +9,7 @@
             <li class=" nav-item"><a href="{{ route('list-matiere')}}"><i class="icon-notebook"></i>Matiere</a></li>
             <li class=" nav-item"><a href="{{ route('paiement-index')}}"><i class="icon-paypal"></i>Mensualite</a></li>
             <li class=" nav-item"><a href="{{ route('get-operations')}}"><i class="icon-paypal"></i>Opérations - Jour</a></li>
+            <li class=" nav-item"><a href="{{ route('configuration')}}"><i class="icon-paypal"></i>Configuration</a></li>
 
             <li class=" nav-item"><a href="#"><i class="icon-settings"></i>Parametre</a>
                 <ul>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Paiement extends Model
 {
@@ -45,5 +46,39 @@ class Paiement extends Model
 
 
         return $somme;
+    }
+
+    public  function  getOperationsByDAY()
+    {
+
+    }
+
+    public function paimentsByUser($id)
+    {
+        try
+        {
+           return DB::transaction(function () use($id){
+               $user = User::find($id);
+               if ($user->name="super admin")
+               {
+
+               }
+               $date_now = date('Y-m-d 00:00:00');
+               $datesuivant = date('Y-m-d 23:59:59');
+               if ($user)
+               {
+                   $paiements = Paiement::where('user_id', $id)->whereBetween('created_at',[$date_now, $datesuivant]);
+
+               }
+           }) ;
+        }
+        catch (\Exception $e)
+        {
+
+        }
+    }
+    public  function  makePDF($id)
+    {
+
     }
 }

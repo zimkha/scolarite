@@ -358,7 +358,9 @@
                          <br>Telephone : 77 550 49 95
                      </td>
                  </div>
-              <br>
+
+             <h4 align="center"><?php echo "FACTURE DU MOIS DE:  ".strtoupper(substr(date('F'),0,3))?></h4>
+
                  &nbsp; &nbsp; &nbsp; Nom:<strong>{{$val['inscription']->eleve->prenom}}</strong> <br>
                  &nbsp; &nbsp; &nbsp; Prenom:  <strong>{{$val['inscription']->eleve->nom}}</strong><br>
                  &nbsp; &nbsp; &nbsp; Classe: <strong>{{$val['inscription']->classe->nom_classe}}</strong>
@@ -378,9 +380,10 @@
                   ?>
                  &nbsp; &nbsp; &nbsp; Net à payer : {{ number_format($somme, 0, '.',' ')}}
                  <p style=" font-style: italic;">Les parents doivent s'acquiter des frais de scolarités au plus tard le 05 du mois; Passé cette date les élèves ne seront reçu a l'écoel qu'après réglement</p>
-                 <p style="float: right">
+
+                 <div style="float: right">
                      Merci de votre confiance
-                 </p>
+                 </div>
              @endforeach
 
          </div>

@@ -59,8 +59,8 @@
     src="{{ asset('assets/js/jquery.js') }}"
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-<script src="http://localhost/scolarite/public/assets/myChart.js"></script>
+<script src="{{ asset('js/ChartGraphique.min.js') }}"></script>
+<script src="{{ asset('assets/myChart.js') }}"></script>
 
 
 

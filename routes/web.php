@@ -66,3 +66,4 @@ Route::get('/certificat/{id}', 'InscriptionController@getCertificat')->name('cer
 
 Route::get('/statmensuel/{id}', 'OperationController@getstatsmensuel');
 Route::get('/statistique-graphique', 'OperationController@statistiques')->name('graph');
+Route::get('/configuration', 'FactureController@configuration')->name('configuration');
