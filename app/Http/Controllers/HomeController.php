@@ -11,6 +11,7 @@ use App\NiveauClasse;
 use App\AnneeScolaire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class HomeController extends Controller
 {
@@ -93,7 +94,11 @@ class HomeController extends Controller
             {
                 $somme_incription = $somme_incription + $item->somme_inscription;
             }
-            return view('pdfs.operation', compact('paiement', 'inscriptions', 'somme_incription', 'somme_paiement'));
+            $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pdfs.operation',
+                compact('paiement', 'inscriptions', 'somme_incription', 'somme_paiement'));
+            $measure = array(20, -10, 1200, 700);
+            return $pdf->setPaper('landscape')->stream();
+       //     return view('pdfs.operation', compact('paiement', 'inscriptions', 'somme_incription', 'somme_paiement'));
 
         }catch(\Exception $ex)
         {

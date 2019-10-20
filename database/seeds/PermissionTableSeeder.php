@@ -63,9 +63,15 @@ class PermissionTableSeeder extends Seeder
         ];
         foreach ($permissions as $permission)
         {
-            if (Permission::where('name', $permission['name'])->first()==null) {
+            $newitem = Permission::where('name', $permission['name'])->first();
+            if (!isset($newitem))
+            {
                 Permission::create(['name' => $permission['name'], 'display_name' => $permission['display_name']]);
-
+            }
+            else
+            {
+                $newitem->display_name = $permission['display_name'];
+                $newitem->save();
             }
 
         }

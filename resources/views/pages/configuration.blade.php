@@ -14,25 +14,10 @@
                 <div class="col-12">
                     <div class="main-card mb-12 card">
                       <div class="card-body">
-                       <form
+
                       </div>
                     </div>
                 </div>
-                <!-- END Filter -->
-                <section id="configuration">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </div>
     </div>
