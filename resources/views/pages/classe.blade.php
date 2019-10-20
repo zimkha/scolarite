@@ -88,7 +88,7 @@
                                                     <td>{{ $item->somme_inscription }}</td>
                                                     <td>
                                                             <a class="btn btn-icon" href="{{ route('show-classe', ['id' =>$item->id]) }}"><i class="icon-note"></i> </a>
-                                                            <a class="btn btn-icon" href="#"><i class="icon-question"></i> </a>
+                                                            <a class="btn btn-icon" href="{{ route('delete-classe', ['id' =>$item->id]) }}" onclick="confirm('confirmer la suppression')"><i class="icon-question"></i> </a>
                                                         </td>
                                                 </tr>
                                                 @endforeach
@@ -121,37 +121,35 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h4 class="card-title"> Classe</h4>
-                                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-
-                                            </div>
-                                            <div class="card-content collapse show" style="">
-                                        <form class="form-horizontal" method="post"  action="{{ route('save-classe') }}">
-                                                   <div class="form-group">
-                                                       <label>Nom classe</label>
-                                                       <input type="text" required name="nom_classe" class="form-control">
-                                                   </div>
-
-                                                <div class="form-group">
-                                                    <label>Niveau classe</label>
-                                                    <select class="form-control" name="niveau_classe_id">
-                                                        @foreach($niveau as $item)
-                                                            <option value="{{ $item->id }}">
-                                                                {{ $item->nom_niveau }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                        </form>
-                                        </div>
+                                <form class="form-horizontal" method="post"  action="{{ route('save-classe') }}">
+                                    <div class="form-group">
+                                        <label>Nom classe</label>
+                                        <input type="text" required name="nom_classe" class="form-control">
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="form-group">
+                                        <label>Inscription</label>
+                                        <input type="text" required name="inscription" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mensualite</label>
+                                        <input type="text" required name="mensualite" class="form-control">
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label>Niveau classe</label>
+                                        <select class="form-control" name="niveau_id">
+                                            @foreach($niveau as $item)
+                                                <option value="{{ $item->id }}">
+                                                    {{ $item->nom_niveau }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>
+                                        <button type="submit" class="btn btn-outline-success">Enregistre</button>
+                                    </div>
+                                </form>
                         </div>
                     </div>
                 </div>

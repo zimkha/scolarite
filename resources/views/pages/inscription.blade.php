@@ -95,27 +95,39 @@
                                                         <input type="number" name="montant" placeholder="montant inscription" required="required" class="form-control">
                                                 </div>
                                             </div>
-                                            <h4 class="form-section"><i class="ft-user"></i>Informations Tuteur</h4>
+                                            <h4 class="form-section"><i class="ft-user"></i>Informations Tuteur & Parents</h4>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput1">Nom</label>
-                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nom">
+                                                    <label for="projectinput2">Prenom Père</label>
+                                                    <input type="text"  class="form-control" placeholder="prenom" name="prenom">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput2">Prenom</label>
-                                                    <input type="text"  class="form-control" placeholder="prenom" name="prenom">
+                                                    <label for="projectinput3">Prenom mère</label>
+                                                    <input type="text" class="form-control" placeholder="adresse" name="adresse_tuteur">
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6 mb-2">
+                                                    <label for="projectinput4">Nom mère</label>
+                                                    <input type="phone"  class="form-control" placeholder="telephone tuteur" name="telephone">
+                                                </div>
+                                                <div class="form-group col-md-6 mb-2">
+                                                    <label for="projectinput1">Nom complet Tuteur</label>
+                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nomcomplet_tuteur">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput3">Adresse</label>
-                                                    <input type="text" class="form-control" placeholder="adresse" name="adresse">
+                                                    <label for="projectinput3">Adresse Tuteur</label>
+                                                    <input type="text" class="form-control" placeholder="adresse" name="adresse_tuteur">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput4">Contact/phone</label>
                                                     <input type="phone"  class="form-control" placeholder="telephone tuteur" name="telephone">
                                                 </div>
                                             </div>
+
                                             <div class="row">
                                                  &nbsp;&nbsp; &nbsp; <button type="submit" name="binscription" class="btn btn-success float-right">Enregistre</button>
                                             </div>

@@ -30,31 +30,33 @@ class ClasseController extends Controller
           return DB::transaction(function() use($request){
               $errors = null;
               $classe = new Classe();
+
               if($request->id)  $classe = Classe::find($request->id);
               if (empty($request->nom_classe) || empty($request->niveau_id) )
               {
                  $errors = "Veuillez remplir tout les champs du formulaire";
               }
-              $this->validate($request, [
-                 'nom_classe'    => 'required|min:5',
-                 'niveau_id'     => 'required'
-              ]);
+
               if($request->somme_isncription)
                     $classe->somme_isncription = $request->somme_isncription;
               if($request->mensualite)
                     $classe->mensualite  = $request->mensualite;
-              $classe->niveau_id = $request->niveau_id;
+              $classe->niveau_classe_id = $request->niveau_id;
               $classe->nom_classe = $request->nom_classe;
+              $classe->code_classe = strtoupper(substr($classe->nom_classe, 0,2))."00";
+
               if($errors == null)
               {
+
                   $classe->save();
-                  return $classe;
+                  return redirect()->route('home-classe');
               }
+
               else return response()->json($errors);
           }) ;
         }catch(\Exception $exception)
         {
-          return response()->json($exception->getMessage())->header(['Content-Type' => 'application/jspn']);
+          return response()->json($exception->getMessage());
         }
     }
 

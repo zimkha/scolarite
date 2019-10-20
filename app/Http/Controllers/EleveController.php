@@ -52,11 +52,31 @@ class EleveController extends Controller
                    if(isset($request->telephone)) $eleve->telephone = $request->telephone;
                    if ($errors == null)
                    {
+                       $inscription = Inscription::where('eleve_id', $request->id)->get()->last();
                        $eleve->nom              = $request->nom;
                        $eleve->prenom           = $request->prenom;
                        $eleve->adresse          = $request->adresse;
                        $eleve->naissance        = $request->date_naissance;
-                      
+                       $eleve->prenom_pere      = $request->prenom_pere;
+                       $eleve->prenom_mere      = $request->prenom_mere;
+                      if (isset($request->nom_mere))
+                      {
+                          $eleve->nom_mere         = $request->nom_mere;
+                      }
+                      if (isset($request->lieu_naissance))
+                      {
+                          $eleve->lieu_naissance         = $request->lieu_naissance;
+                      }
+                       if ($request->hasFile('image'))
+                       {
+                           $image = $request->file('image');
+                           $extension = $image->getClientOriginalExtension();
+                           $image_name = time().'.'.$extension;
+                           $directory = '/public/uploads/imgs/';
+                           $image->move(base_path().$directory , $image_name);
+                           $inscription->image =  $image_name;
+                       }
+
                        $eleve->save();
                        $inscription = Inscription::where('eleve_id', $eleve->id)->get()->last();
                        
@@ -68,6 +88,7 @@ class EleveController extends Controller
                 {
                     $errors ="L'eleve avec cette id n'existe pas dans la base";
                 }
+                return response()->json($errors);
             });
         }catch (\Exception $exception)
         {
@@ -145,7 +166,16 @@ class EleveController extends Controller
                  }
                
             }
-            return view('pages/profile-eleve', compact('eleve', 'etat', 'inscription', 'classe', 'mois', 'image', 'path', 'chemin', 'paiements', 'age'));
-
+            return view('pages/profile-eleve',
+                compact('eleve',
+                    'etat',
+                    'inscription',
+                    'classe',
+                    'mois',
+                    'image',
+                    'path',
+                    'chemin',
+                    'paiements',
+                    'age'));
     }
 }

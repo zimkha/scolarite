@@ -6,10 +6,12 @@
 <script src="{{asset("js/angular/angular-moment.min.js")}}"></script>
 <script src="{{asset("js/angular/angular-filter.min.js")}}"></script>
 
-<script src="{{asset("js/angular/ui-bootstrap-tpls-2.5.0.min.js")}}" type="text/javascript"></script>
+
+{{--angular
+ <script src="{{asset("js/angular/ui-bootstrap-tpls-2.5.0.min.js")}}" type="text/javascript"></script>
 
 <script src="{{asset("js/angular/BACKOFFICE.js")}}"></script>
-{{--angular--}}
+--}}
 
 
 
@@ -54,7 +56,7 @@
 
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}"></script>
 <script
-    src="https://code.jquery.com/jquery-3.4.1.js"
+    src="{{ asset('assets/js/jquery.js') }}"
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>

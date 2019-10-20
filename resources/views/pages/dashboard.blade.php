@@ -111,7 +111,7 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <div  class="chart-container" style="position: relative; height:40vh; width:40vw">
+                                        <div  class="chart-container" style="position: relative; height: 40vh; width:40vw">
                                             <canvas id="graphChar"></canvas>
                                         </div>
 

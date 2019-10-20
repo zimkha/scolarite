@@ -22,8 +22,8 @@ class RoleTableSeeder extends Seeder
 
 
         $users = array();
-        array_push($users,array("name" => "pharmapro" , "email" => "root@pharmapro.sn" , "password" => "root"));
-        array_push($users,array("name" => "GUINDY" , "email" => "guindytechnology@gmail.com" , "password" => "guindy"));
+        array_push($users,array("name" => "luqman" , "email" => "root@luqman.sn" , "password" => "root"));
+        array_push($users,array("name" => "diagne" , "email" => "diagne@gmail.com" , "password" => "root"));
 
         foreach ($users as $user)
         {
