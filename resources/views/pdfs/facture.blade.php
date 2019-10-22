@@ -369,7 +369,7 @@
                  &nbsp; &nbsp; &nbsp; Montant a payer et Recouvrement
              <br>
              <br>
-                 &nbsp; &nbsp; &nbsp;  &nbsp;recouvrement: @if($val['recouvrement'] > 0)    &nbsp; &nbsp; &nbsp;<strong>{{ number_format($val['recouvrement'], 0,'.',' ') }} Fcfa </strong> @else    &nbsp; &nbsp; &nbsp;0 Fcfa @endif
+                 &nbsp; &nbsp; &nbsp;  Reliquat: @if($val['recouvrement'] > 0)    &nbsp; &nbsp; &nbsp;<strong>{{ number_format($val['recouvrement'], 0,'.',' ') }} Fcfa </strong> @else    &nbsp; &nbsp; &nbsp;0 Fcfa @endif
                  <br>
 
                  &nbsp; &nbsp; &nbsp; Mois : {{ $val['mensuel'] }} {{ $val['mois'] }}
@@ -379,7 +379,7 @@
                   $somme =(int) $val['recouvrement'] + (int)$val['inscription']->classe->mensualite;
                   ?>
                  &nbsp; &nbsp; &nbsp; Net à payer : {{ number_format($somme, 0, '.',' ')}}
-                 <p style=" font-style: italic;">Les parents doivent s'acquiter des frais de scolarités au plus tard le 05 du mois; Passé cette date les élèves ne seront reçu a l'écoel qu'après réglement</p>
+                 <p style=" font-style: italic;">Les parents doivent s'acquiter des frais de scolarités au plus tard le 05 du mois; Passé cette date les élèves ne seront reçu a l'école qu'après réglement</p>
 
                  <div style="float: right">
                      Merci de votre confiance

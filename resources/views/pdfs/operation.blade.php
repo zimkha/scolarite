@@ -806,7 +806,7 @@
 
 
 </style>
-<body >
+<body onload="window.print()">
 <div class="my-image header">
    <!-- <img src="" width="100%" height="100%">-->
 </div>
@@ -832,6 +832,7 @@
                 <thead align="center">
                 <th>date</th>
                 <th>operateur</th>
+                <th>Eleve></th>
                 <th>montant</th>
                 </th>
                 </thead>
@@ -840,6 +841,7 @@
                    <tr align="center">
               <td>{{ $item->created_at }}</td>
               <td>{{  $item->user->name}}</td>
+                       <td>{{  $item->inscription->eleve->nom}}</td>
               <td>{{ $item->montant }}</td>
                    </tr>
                    @endforeach
