@@ -37,45 +37,6 @@
                                         </div>
                                     </div>
 
-                                    <section id="justified-top-border">
-                                        <div class="row match-height">
-                                            <div class="col-lg-12">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h4 class="card-title">Basic Justified Tab</h4>
-                                                    </div>
-                                                    <div class="card-content">
-                                                        <div class="card-body">
-                                                            <p>Use <code>.nav-justified</code> class to set tabs justified.</p>
-                                                            <ul class="nav nav-tabs nav-justified">
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link active" id="active-tab" data-toggle="tab" href="#active" aria-controls="active" aria-expanded="true">Active</a>
-                                                                </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" id="link-tab" data-toggle="tab" href="#link" aria-controls="link" aria-expanded="false">Link</a>
-                                                                </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" id="dropdownOpt2-tab" data-toggle="tab" href="#dropdownOpt2" aria-controls="dropdownOpt2" aria-expanded="false">dropdownOpt2</a>
-                                                                </li>
-                                                            </ul>
-                                                            <div class="tab-content px-1 pt-1">
-                                                                <div role="tabpanel" class="tab-pane active" id="active" aria-labelledby="active-tab" aria-expanded="true">
-                                                                    <p>Macaroon candy canes tootsie roll wafer lemon drops liquorice jelly-o tootsie roll cake. Marzipan liquorice soufflé cotton candy jelly cake jelly-o sugar plum marshmallow. Dessert cotton candy macaroon chocolate sugar plum cake donut.</p>
-                                                                </div>
-                                                                <div class="tab-pane" id="link" role="tabpanel" aria-labelledby="link-tab" aria-expanded="false">
-                                                                    <p>Chocolate bar gummies sesame snaps. Liquorice cake sesame snaps cotton candy cake sweet brownie. Cotton candy candy canes brownie. Biscuit pudding sesame snaps pudding pudding sesame snaps biscuit tiramisu.</p>
-                                                                </div>
-                                                                <div class="tab-pane" id="dropdownOpt2" role="tabpanel" aria-labelledby="dropdownOpt2-tab" aria-expanded="false">
-                                                                    <p>Soufflé cake gingerbread apple pie sweet roll pudding. Sweet roll dragée topping cotton candy cake jelly beans. Pie lemon drops sweet pastry candy canes chocolate cake bear claw cotton candy wafer.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
                                     <div class="card-content collapse show">
                                         <div class="card-body card-dashboard">
 
