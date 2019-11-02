@@ -77,38 +77,56 @@
             <br>
         </div>
 
-        <div class="col-xl-3 col-md-6 col-12">
-
-            <div class="card">
-                <div class="text-center">
-                    <div class="card-body">
-                        <img  src="{{ asset($chemin) }}" class="rounded-circle  height-150 width-150" alt="Card image">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">{{ $eleve->matricule }}</h4>
-                        <h6 class="card-subtitle text-muted">{{ $eleve->naissance }}</h6>
-                    </div>
-
-                </div>
+        <div class="col-xl-12 col-md-6 col-12">
+       <div class="row">
+           <div class="col-md-6">
+                <div class="card">
+                 <div class="card-body">
+                     Informations Eleve
+                     <table class="table table-hover">
+                            <tr>
+                                    <td>Date naissance</td> <td>{{ $eleve->naissance }}</td>
+                                    </tr>
+                                     <tr>
+                                         <td>Lieu</td> <td>{{ $eleve->lieu_naissance }}</td>
+                                     </tr>
+                                     <tr>
+                                         <td>Adresse</td> <td>{{ $eleve->adresse }}</td>
+                                     </tr>
+                                     
+                     </table>
+                 </div>   
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 col-12">
+        <div class="col-md-6">
+                <div class="card">
+                 <div class="card-body">
+                     Informations Parents
+                     <table class="table table-hover">
+                            <tr>
+                                    <td>Prenom Pere</td> <td>{{ $eleve->prenom_pere }}</td>
+                                    </tr>
+                                     <tr>
+                                         <td>Prenom Mere</td> <td>{{ $eleve->prenom_mere }}</td>
+                                     </tr>
+                                     <tr>
+                                         <td>Nom Mere</td> <td>{{ $eleve->nom_mere }}</td>
+                                     </tr>
+                                     
+                     </table>
+                 </div>   
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-12 col-md-6 col-12">
             <div class="card">
                 <div class="text-center">
 
                     <div class="card-body">
 
                      <table class="table table-striped">
-                        <tr>
-                        <td>Nom complet</td> <td>{{ $eleve->nomcomplet_tuteur }}</td>
-                        </tr>
-                         <tr>
-                             <td>Adresse</td> <td>{{ $eleve->adresse_tuteur }}</td>
-                         </tr>
-                         <tr>
-                             <td>Contact</td> <td>{{ $eleve->telephone }}</td>
-                         </tr>
-                         
+                       
                      </table>
                     </div>
 
@@ -116,21 +134,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 col-md-6 col-12">
-            <div class="card">
-                <div class="text-center">
-                    <div class="card-body">
-                        <img src="{{asset('app-assets/images/portrait/medium/avatar-m-1.png')}}" class="rounded-circle  height-150" alt="Card image">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Joseph Ryan</h4>
-                        <h6 class="card-subtitle text-muted">Marketing Head</h6>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
+       
     </section>
             <div class="row">
                 <div class="col-12">
@@ -195,7 +199,9 @@
                                             ?>
     
                                         <td>
-                                            <a  href="" class="btn btn-icon " data-toggle="dropdown"aria-haspopup="true" title="consulter" aria-expanded="false"><i class="icon-action-redo"></i> </a>
+                                        <a href="{{route('delete-paiement', ['id' => $item->id]) }}" onclick="confirm('confirmer la suppression de ce paiement')" class="btn btn-icon "  title="supprimer" aria-expanded="false"><i class="icon-action-redo"></i> </a>
+
+                                          
                                         </td>
 
                                     </tr>
@@ -326,6 +332,22 @@
                                         <input type="phone" name="telephone" value="{{ $eleve->telephone }}" class="form-control">
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                        <div class="form-group col-md-4 mb-2">
+                                            <label for="nom">Prenom Père</label>
+                                            <input type="texte" name="prenom_pere" value="{{ $eleve->prenom_pere }}" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4 mb-2">
+                                            <label for="nom">Prenom Mère</label>
+                                            <input type="texte" name="prenom_mere" value="{{ $eleve->prenom_mere }}" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4 mb-2">
+                                            <label for="nom">Nom Mère</label>
+                                            <input type="texte" name="nom_mere" value="{{ $eleve->nom_mere }}" class="form-control">
+                                        </div>
+                                       
+                                    </div>
 
                                 <div class="modal-footer">
                                     <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>

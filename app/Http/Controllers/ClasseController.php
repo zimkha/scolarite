@@ -65,9 +65,11 @@ class ClasseController extends Controller
      */
     public function delete($id)
     {
+       
         try{
             return DB::transaction(function () use($id)
             {
+               
                 $errors = null;
                 $data = 0;
                 if($id)
@@ -75,7 +77,7 @@ class ClasseController extends Controller
                     $classe  = Classe::find($id);
                     if($classe)
                     {
-                      $nb_ins = count($classe->inscriptiones);
+                      $nb_ins = count($classe->inscriptions);
                       if ($nb_ins > 0)
                       {
                           $errors ="cette classe ne peu pas etre supprmer dans la base car elle est relie a des donnes du systeme";
@@ -85,7 +87,7 @@ class ClasseController extends Controller
                           $classe->delete();
                           $classe->forceDelete();
                           $data = 1;
-                          return $data ;
+                          return redirect()->route('home-classe');
                       }
                     }
                     else
@@ -107,6 +109,7 @@ class ClasseController extends Controller
      */
     public  function  show($id)
     {
+       
         try{
             $errors = null;
             $tab = array();
@@ -161,7 +164,11 @@ class ClasseController extends Controller
              if ($paiements)
               $montant = $montant + $paiements->montant;
             }
+            if($montant_mois!=0)           
+           {
             $pourcentage = ($montant * 100)/$montant_mois;
+           } 
+           else $pourcentage = 0;
         }
         return  (int) $pourcentage;
     }

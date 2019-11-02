@@ -66,7 +66,32 @@ class PaiementController extends Controller
     }
     public function delete($id)
     {
+      try
+      {
+        return DB::transaction(function()use($id)
+        {
+           $paiement = Paiement::find($id);
+           if(isset($paiement))
+           {
+               $inscription = $paiement->inscription;
+            
+               $paiement->delete();
+               $paiement->forceDelete();
+    
+               Session::flash('message', "Suppression effectue");
+               return Redirect::back();
+           }
+           else
+           {
+               Session::flash('error', "Veuillez contacter le service technique 77 196 73 00");
+               return Redirect::back();
+           }
+        });
+      }
+      catch(\Exception $e)
+      {
 
+      }
     }
     public function index()
     {
@@ -102,35 +127,18 @@ class PaiementController extends Controller
                              break;
                          case $somme_entre_restant > $motant_mensuel:
                              $paiment   = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
-                             if ($paiment->montant < $motant_mensuel)
+                             if (isset($paiment))
                              {
-                                 $restant                     =  $motant_mensuel - $paiment->montant;
-                                 $paiment->montant            = $paiment->montant + $restant;
-                                 $somme_entre_restant         = $somme_entre_restant - $restant;
-                                 $paiment->save();
-                                 array_push($tab, $paiment);
-
-                             }
-                             if ($paiment->montant == $motant_mensuel)
-                             {
-                                 $id_last_month                           = $paiment->mois_id;
-                                 $id_new_month                            = $id_last_month +1;
-                                 $new_paiement                            = new Paiement();
-                                 if ($id_new_month <= 10)
+                                 if ($paiment->montant < $motant_mensuel)
                                  {
-                                     $new_paiement->mois_id                   = $id_new_month;
-                                     $new_paiement->inscription_id            = $inscription->id;
-                                     $new_paiement->user_id                   =1;
-                                     $new_paiement->montant                   = $motant_mensuel;
-                                     $somme_entre_restant                     = $somme_entre_restant - $motant_mensuel;
-
-                                     $new_paiement->save();
-                                     array_push($tab, $new_paiement);
+                                     $restant                     =  $motant_mensuel - $paiment->montant;
+                                     $paiment->montant            = $paiment->montant + $restant;
+                                     $somme_entre_restant         = $somme_entre_restant - $restant;
+                                     $paiment->save();
+                                     array_push($tab, $paiment);
                                  }
-                                 if ($somme_entre_restant > $motant_mensuel && ($paiment->montant == $motant_mensuel))
+                                 if ($paiment->montant == $motant_mensuel)
                                  {
-
-                                     $paiment   = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
                                      $id_last_month                           = $paiment->mois_id;
                                      $id_new_month                            = $id_last_month +1;
                                      $new_paiement                            = new Paiement();
@@ -143,57 +151,84 @@ class PaiementController extends Controller
                                          $somme_entre_restant                     = $somme_entre_restant - $motant_mensuel;
 
                                          $new_paiement->save();
-                                         //dd($paiment->mois_id, $new_paiement->mois_id);
                                          array_push($tab, $new_paiement);
                                      }
+                                     if ($somme_entre_restant > $motant_mensuel && ($paiment->montant == $motant_mensuel))
+                                     {
 
+                                         $paiment   = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
+                                         $id_last_month                           = $paiment->mois_id;
+                                         $id_new_month                            = $id_last_month +1;
+                                         $new_paiement                            = new Paiement();
+                                         if ($id_new_month <= 10)
+                                         {
+                                             $new_paiement->mois_id                   = $id_new_month;
+                                             $new_paiement->inscription_id            = $inscription->id;
+                                             $new_paiement->user_id                   =1;
+                                             $new_paiement->montant                   = $motant_mensuel;
+                                             $somme_entre_restant                     = $somme_entre_restant - $motant_mensuel;
 
+                                             $new_paiement->save();
+                                             //dd($paiment->mois_id, $new_paiement->mois_id);
+                                             array_push($tab, $new_paiement);
+                                         }
 
+                                     }
+
+                                     break;
                                  }
 
-
-                                 break;
+                             }
+                             else
+                             {
+                                 $newPaiement = new Paiement();
                              }
 
                          case $somme_entre_restant < $motant_mensuel:
 
                              $paiment   = Paiement::where('inscription_id', '=', $inscription->id)->get()->last();
 
-                             if ($paiment->montant < $motant_mensuel)
-                             {
-                                 $restant =  $motant_mensuel - $paiment->montant;
-                                 if ($restant <= $somme_entre_restant)
-                                 {
-                                     $paiment->montant            = $motant_mensuel;
-                                     $somme_entre_restant         = $somme_entre_restant - $restant;
-                                 }
-                                 elseif($restant > $somme_entre_restant)
-                                 {
-                                     $paiment->montant            = $paiment->montant + $somme_entre_restant;
-                                     $somme_entre_restant         = 0;
-                                 }
-                                 $paiment->save();
-                                 array_push($tab, $paiment);
+                              if (isset($paiment))
+                              {
+                                  if ($paiment->montant < $motant_mensuel)
+                                  {
+                                      $restant =  $motant_mensuel - $paiment->montant;
+                                      if ($restant <= $somme_entre_restant)
+                                      {
+                                          $paiment->montant            = $motant_mensuel;
+                                          $somme_entre_restant         = $somme_entre_restant - $restant;
+                                      }
+                                      elseif($restant > $somme_entre_restant)
+                                      {
+                                          $paiment->montant            = $paiment->montant + $somme_entre_restant;
+                                          $somme_entre_restant         = 0;
+                                      }
+                                      $paiment->save();
+                                      array_push($tab, $paiment);
 
-                             }
-                             if ($paiment->montant == $motant_mensuel && $somme_entre_restant > 0)
-                             {
-                                 $new_paiement                        = new Paiement();
-                                 $id_last_month                       = $paiment->mois_id;
-                                 $id_new_month                        = $id_last_month +1;
-                                 if ($id_new_month <= 10)
-                                 {
-                                     $new_paiement->mois_id           = $id_new_month;
-                                     $new_paiement->inscription_id    = $inscription->id;
-                                     $new_paiement->user_id           = 1;
-                                     $new_paiement->montant           = $somme_entre_restant;
-                                     $new_paiement->save();
-                                     array_push($tab, $new_paiement);
-                                     $somme_entre_restant = 0;
-                                     break;
-                                 }
-                             }
-
+                                  }
+                                  if ($paiment->montant == $motant_mensuel && $somme_entre_restant > 0)
+                                  {
+                                      $new_paiement                        = new Paiement();
+                                      $id_last_month                       = $paiment->mois_id;
+                                      $id_new_month                        = $id_last_month +1;
+                                      if ($id_new_month <= 10)
+                                      {
+                                          $new_paiement->mois_id           = $id_new_month;
+                                          $new_paiement->inscription_id    = $inscription->id;
+                                          $new_paiement->user_id           = 1;
+                                          $new_paiement->montant           = $somme_entre_restant;
+                                          $new_paiement->save();
+                                          array_push($tab, $new_paiement);
+                                          $somme_entre_restant = 0;
+                                          break;
+                                      }
+                                  }
+                              }
+                              else
+                              {
+                                  $errors ="Veuillez d'abord enregistrement un paiement normal pour cette eleve";
+                              }
                      }
 
                  }
@@ -206,7 +241,7 @@ class PaiementController extends Controller
                }
                if ($errors)
                {
-                   return response()->json($errors);
+                   //return response()->json($errors);
                    Session::flash('error', $errors);
                    return Redirect::back();
                }
@@ -214,7 +249,7 @@ class PaiementController extends Controller
                {
                    Session::flash('message', "Paiement bien enregistre");
                    return Redirect::back();
-                  return response()->json(['tab' => $tab, 'somme' => $somme_entre_restant]);
+                 // return response()->json(['tab' => $tab, 'somme' => $somme_entre_restant]);
                }
 
             });

@@ -80,47 +80,19 @@
                     </div>
                 </div>
                 <div class="row align-self-center">
-                    <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="col-xl-612col-lg-12 col-md-12">
                         <div class="card">
                             <div class="card-content">
-                                <div class="card-body text-center">
-                                    <div class="card-header mb-2">
-                                        <span class="success darken-1">Inscriptions</span>
-                                        <h3 class="font-large-2 grey darken-1 text-bold-200">{{ count($inscriptions) }}</h3>
+                                <div class="card-body">
+                                    <div  class="chart-container" style="position: relative; height: 40vh; width:40vw">
+                                        <canvas id="graphChar"></canvas>
                                     </div>
 
-                                    <div class="card-content">
-                                        <input type="text" value="75" class="knob hide-value responsive angle-offset" data-angleOffset="0" data-thickness=".15" data-linecap="round" data-width="150" data-height="150" data-inputColor="#e1e1e1" data-readOnly="true" data-fgColor="blue" data-knob-icon="ft-trending-up">
-                                        <ul class="list-inline clearfix mt-2 mb-0">
-                                            <li class="border-right-grey border-right-lighten-2 pr-2">
-                                                <h2 class="grey darken-1 text-bold-400">{{ $garcon }}</h2>
-                                                <span class="success">Garçons</span>
-                                            </li>
-                                            <li class="pl-2">
-                                                <h2 class="grey darken-1 text-bold-400">{{ $filles }}</h2>
-                                                <span class="danger">Filles</span>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-12 col-md-12">
 
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <div  class="chart-container" style="position: relative; height: 40vh; width:40vw">
-                                            <canvas id="graphChar"></canvas>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                    </div>
                 </div>
             </div>
 

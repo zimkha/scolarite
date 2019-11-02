@@ -32,7 +32,7 @@ Route::post('/classe', 'ClasseController@save')->name('save-classe');
 Route::get('/classe-index', 'ClasseController@index')->name('home-classe');
 Route::get('/classes', 'ClasseController@getAll');
 Route::get('/classe/{id}', 'ClasseController@show')->name('show-classe');
-Route::delete('/classe/{id}', 'ClasseController@delete')->name('delete-classe');
+Route::get('/classe/delete/{id}', 'ClasseController@delete')->name('delete-classe');
 Route::post('/eleve-store', 'EleveController@saveUpdate')->name('save-update-eleve');
 
 Route::post('/inscription', 'InscriptionController@save')->name('inscrire');
@@ -44,6 +44,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile-eleve/{id}', 'EleveController@show')->name('voir-eleve');
 Route::post('/paiement-save', 'PaiementController@save')->name('save-paiement');
 Route::get('/paiement-index', 'PaiementController@index')->name('paiement-index');
+Route::get('/paiement/delete/{id}', 'PaiementController@delete')->name('delete-paiement');
 
 Route::post('/paiement-dispatch','PaiementController@savePaiementDispatch')->name('savePaiementDispatch');
 

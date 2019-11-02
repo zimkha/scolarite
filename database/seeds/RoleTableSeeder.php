@@ -27,17 +27,17 @@ class RoleTableSeeder extends Seeder
 
         foreach ($users as $user)
         {
-            if (!User::all()->where('email', $user['email'])->first() && !User::onlyTrashed()->where('email', $user['email'])->get()->first())
+            $newuser = User::where('email', $user['email'])->first();
+            if (!$newuser)
             {
-                $newuser = new \App\User();
-                $newuser->name = $user['name'];
-                $newuser->email = $user['email'];
+                $newuser = new User();
                 $newuser->password = bcrypt($user['password']);
-                $newuser->active = 1;
-                $newuser->save();
-                $newuser->id = \Illuminate\Support\Facades\DB::select('SELECT id FROM users ORDER BY id DESC LIMIT 1')[0]->id;
-                $newuser->syncRoles($role);
             }
+            $newuser->name = $user['name'];
+            $newuser->email = $user['email'];
+            $newuser->save();
+            $newuser->id = \Illuminate\Support\Facades\DB::select('SELECT id FROM users ORDER BY id DESC LIMIT 1')[0]->id;
+            $newuser->syncRoles($role);
         }
 
     }

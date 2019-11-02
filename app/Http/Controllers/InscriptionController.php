@@ -63,9 +63,9 @@ class InscriptionController extends Controller
                 {
                     $eleve->naissance =  $request->date_naissance;
                 }
-                if(isset($request->nomcompet_tuteur))
+                if(isset($request->nomcomplet_tuteur))
                 {
-                    $eleve->nomcomplet_tuteur =  $request->nomcompet_tuteur;
+                    $eleve->nomcomplet_tuteur =  $request->nomcomplet_tuteur;
                 }
                 if(isset($request->adresse_tuteur))
                 {
@@ -82,6 +82,18 @@ class InscriptionController extends Controller
                 if (isset($request->genre))
                 {
                     $eleve->genre = $request->genre;
+                }
+                if (isset($request->prenom_pere))
+                {
+                    $eleve->prenom_pere = $request->prenom_pere;
+                }
+                if (isset($request->prenom_mere))
+                {
+                    $eleve->prenom_mere = $request->prenom_mere;
+                }
+                if (isset($request->nom_mere))
+                {
+                    $eleve->nom_mere = $request->nom_mere;
                 }
 
 
@@ -102,7 +114,7 @@ class InscriptionController extends Controller
                 $inscription->classe_id     = $request->classe_id;
                 $inscription->annee_scolaire_id = $request->annee_scolaire_id;
                 $classe  = Classe::find($request->classe_id);
-                $inscription->somme_inscription = $classe->somme_inscription;
+                $inscription->somme_inscription = $request->montant;
                 
                 $inscription->etat_inscription = true;
                 $inscription->user_id = 1;

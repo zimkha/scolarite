@@ -14,6 +14,7 @@
                 </div>
             <div class="content-body">
                 <h1 style="text-transform: capitalize;">{{ $classe->nom_classe }}</h1> <h6>"{{ $classe->niveau_classe->nom_niveau }}"</h6>
+                <a class="btn btn-info" href="#" title="recapitulatif eleve"  data-toggle="modal" data-target="#showForme"><i class="icon-magic-wand"></i> </a>
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-4">
                         <div class="card">
@@ -142,5 +143,49 @@
             </div>
             </div>
         </div>
-    </body>
+        <div class="modal fade text-left" id="showForme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel17">Nouvelle Classe</h4> <a class="btn btn-icon" href="#" title="imprimer"><i class="icon-printer"></i></a>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post"  action="{{ route('save-classe') }}">        <div class="modal fade text-left" id="showForme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
+
+                        <input type="hidden" value="{{ $classe->id}}">
+                            <div class="form-group">
+                                <label>Nom classe</label>
+                            <input type="text" required name="nom_classe" class="form-control" value="{{ $classe->nom_classe }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Inscription</label>
+                                <input type="text" required name="inscription" class="form-control" value="{{ $classe->nom_classe }}" >
+                            </div>
+                            <div class="form-group">
+                                <label>Mensualite</label>
+                                <input type="text" required name="mensualite" class="form-control" value="{{ $classe->nom_classe }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Niveau classe</label>
+                                <select class="form-control" name="niveau_id">
+                                <option value="{{ $classe->niveau_classe->id }}">
+                                {{ $classe->niveau_classe->nom_niveau }}
+                                </option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="reset" class="btn grey btn-outline-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-outline-success">Enregistre</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+        </div> 
+       </body>
 @endsection

@@ -63,21 +63,9 @@
                                                 </div>
                                             </div>
 
-                                            <h4 class="form-section"><i class="ft-clipboard"></i>Niveau & Classe</h4>
+                                            <h4 class="form-section"><i class="ft-clipboard"></i>Classe</h4>
                                             <div class="row">
-                                                <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput6">Niveau</label>
-                                                    <select id="projectinput6" name="interested" class="form-control">
-                                                        <option value="none" selected="" disabled="">Interested in</option>
-                                                        <option value="design">design</option>
-                                                        <option value="development">development</option>
-                                                        <option value="illustration">illustration</option>
-                                                        <option value="branding">branding</option>
-                                                        <option value="video">video</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group col-md-6 mb-2">
+                                                <div class="form-group col-md-12 mb-2">
                                                     <label for="projectinput7">Classe</label>
                                                     <select id="projectinput7" name="classe_id" class="form-control">
                                                       @foreach($classes as $class)
@@ -88,10 +76,8 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="form-group col-6 mb-2">
-                                                        <input type="file" name="image" title="chosir une photo" class="form-control">
-                                                </div>
-                                                <div class="form-group col-6 mb-2">
+                                               
+                                                <div class="form-group col-12 mb-2">
                                                         <input type="number" name="montant" placeholder="montant inscription" required="required" class="form-control">
                                                 </div>
                                             </div>
@@ -99,22 +85,22 @@
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput2">Prenom Père</label>
-                                                    <input type="text"  class="form-control" placeholder="prenom" name="prenom">
+                                                    <input type="text"  class="form-control" placeholder="prenom père" name="prenom">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput3">Prenom mère</label>
-                                                    <input type="text" class="form-control" placeholder="adresse" name="adresse_tuteur">
+                                                    <input type="text" class="form-control" placeholder="prenom mère" name="prenom_mere">
                                                 </div>
 
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput4">Nom mère</label>
-                                                    <input type="phone"  class="form-control" placeholder="telephone tuteur" name="telephone">
+                                                    <input type="phone"  class="form-control" placeholder="nom mère" name="nom_mere">
                                                 </div>
                                                 <div class="form-group col-md-6 mb-2">
                                                     <label for="projectinput1">Nom complet Tuteur</label>
-                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom" name="nomcomplet_tuteur">
+                                                    <input type="text" id="projectinput1" class="form-control" placeholder="nom tuteur" name="nomcomplet_tuteur">
                                                 </div>
                                             </div>
                                             <div class="row">

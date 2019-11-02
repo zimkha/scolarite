@@ -67,7 +67,7 @@ class EleveController extends Controller
                       {
                           $eleve->lieu_naissance         = $request->lieu_naissance;
                       }
-                       if ($request->hasFile('image'))
+                      /* if ($request->hasFile('image'))
                        {
                            $image = $request->file('image');
                            $extension = $image->getClientOriginalExtension();
@@ -75,7 +75,7 @@ class EleveController extends Controller
                            $directory = '/public/uploads/imgs/';
                            $image->move(base_path().$directory , $image_name);
                            $inscription->image =  $image_name;
-                       }
+                       }*/
 
                        $eleve->save();
                        $inscription = Inscription::where('eleve_id', $eleve->id)->get()->last();
@@ -150,19 +150,19 @@ class EleveController extends Controller
                     $single = null;
                     $image = null;
                     $mois = Mensuel::all();
-                    $directory = '/public/uploads/imgs/';
+                   // $directory = '/public/uploads/imgs/';
                     $classe = $inscription->classe;
                    
 
-                    $filename = $inscription->image;
+                   // $filename = $inscription->image;
 
-                   if (File::exists(base_path().$directory, $filename))
+                  /* if (File::exists(base_path().$directory, $filename))
                    {
   
-                       $path = base_path().$directory.$filename;
-                       $chemin = 'uploads/imgs/'.$filename;
-                       $image = File::get($path);
-                   }
+                     //  $path = base_path().$directory.$filename;
+                      // $chemin = 'uploads/imgs/'.$filename;
+                       //$image = File::get($path);
+                   }*/
                  }
                
             }
@@ -173,8 +173,7 @@ class EleveController extends Controller
                     'classe',
                     'mois',
                     'image',
-                    'path',
-                    'chemin',
+                   
                     'paiements',
                     'age'));
     }
